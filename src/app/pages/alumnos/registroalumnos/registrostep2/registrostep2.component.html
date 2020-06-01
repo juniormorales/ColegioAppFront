@@ -1,1 +1,25 @@
-<p>registrostep2 works!</p>
+<h5 class=" info-text">Ingresa una foto del alumno</h5>
+<div class=" row justify-content-center">
+  <div class=" col-lg-10 text-center">
+    <div class="fileinput text-center">
+      <input type="file" (change)="handleImageChange($event);" #fileInput accept="image/x-png,image/jpg,image/jpeg" />
+      <div class="thumbnail" [ngClass]="{ 'img-circle': avatar }">
+        <img src="{{ imagePreviewUrl }}" alt="..." />
+      </div>
+      <div>
+        <button *ngIf="file === null && !avatar" type="button" class="btn-round btn btn-primary" (click)="handleClick()">
+          Seleccionar Imagen
+        </button>
+        <span *ngIf="file !== null">
+          <button class="btn-round btn btn-primary" type="button" (click)="handleClick()">
+            Cambiar
+          </button>
+          <br *ngIf="avatar" />
+          <button class="btn-round btn btn-danger" type="button" (click)="handleRemove()">
+            <i class="fa fa-times"></i> Remover
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

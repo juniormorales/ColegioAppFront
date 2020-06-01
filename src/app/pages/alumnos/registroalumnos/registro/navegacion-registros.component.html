@@ -1,147 +1,76 @@
 <div class=" content">
-    <div class=" col-md-10 mr-auto ml-auto">
-      <div class=" wizard-container">
-        <div
-          class="bs-stepper card card-wizard"
-          data-color="red"
-          id="wizardProfile"
-        >
-          <form [formGroup]="alumnoForm" (ngSubmit)="onRegister()">
-            <div class="card-header text-center">
-              <h3 class=" card-title">Registro Alumnos</h3>
-              <h5 class=" description">
-                Registro de nuevo alumno Año {{ano_actual}}
-              </h5>
-              <div class=" wizard-navigation">
-                <div class=" progress-with-circle">
-                  <progressbar class="progress-bar" [value]="value">
-                  </progressbar>
-                </div>
-                <ul class="nav nav-pills nav-pills-danger bs-stepper-header">
-                  <li class="step nav-item" data-target="#personal">
-                    <a
-                      class="step-trigger nav-link active"
-                      [ngClass]="{ checked: checked }"
-                      (click)="value = 15; $event.preventDefault(); checked = true">
-                      <i class=" tim-icons icon-single-02" (click)="checked = true"></i>
-                      <p (click)="checked = true">Datos Personales</p>
-                    </a>
-                  </li>
-                  <li class="step nav-item" data-target="#imagen">
-                    <a
-                      class="step-trigger nav-link"
-                      [ngClass]="{ checked: checked1 }"
-                      (click)="value = 50; $event.preventDefault(); checked1 = true">
-                      <i class=" tim-icons icon-camera-18" (click)="checked1 = true"></i>
-                      <p (click)="checked1 = true">Foto</p>
-                    </a>
-                  </li>
-                  <li class="step nav-item" data-target="#direccion">
-                    <a
-                      class="step-trigger nav-link"
-                      [ngClass]="{ checked: checked2 }"
-                      (click)="value = 85; $event.preventDefault(); checked2 = true">
-                      <i class=" tim-icons icon-delivery-fast" (click)="checked2 = true"></i>
-                      <p (click)="checked2 = true">Direccion</p>
-                    </a>
-                  </li>
-                </ul>
+  <ngx-spinner bdColor="rgba(0, 0, 0, 1)">
+    <img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />
+  </ngx-spinner>
+  <div class=" col-md-10 mr-auto ml-auto">
+    <div class=" wizard-container">
+      <div class="bs-stepper card card-wizard" data-color="red" id="wizardProfile">
+        <form [formGroup]="alumnoForm" (ngSubmit)="onRegister()">
+          <div class="card-header text-center">
+            <h3 class=" card-title">Registro Alumnos</h3>
+            <h5 class=" description">
+              Registro de nuevo alumno Año {{ano_actual}}
+            </h5>
+            <div class=" wizard-navigation">
+              <div class=" progress-with-circle">
+                <progressbar class="progress-bar" [value]="value">
+                </progressbar>
+              </div>
+              <ul class="nav nav-pills nav-pills-danger bs-stepper-header">
+                <li class="step nav-item" data-target="#personal">
+                  <a class="step-trigger nav-link active" [ngClass]="{ checked: checked }"
+                    (click)="value = 15; $event.preventDefault(); checked = true">
+                    <i class=" tim-icons icon-single-02" (click)="checked = true"></i>
+                    <p (click)="checked = true">Datos Personales</p>
+                  </a>
+                </li>
+                <li class="step nav-item" data-target="#imagen">
+                  <a class="step-trigger nav-link" [ngClass]="{ checked: checked1 }"
+                    (click)="value = 50; $event.preventDefault(); checked1 = true">
+                    <i class=" tim-icons icon-camera-18" (click)="checked1 = true"></i>
+                    <p (click)="checked1 = true">Foto</p>
+                  </a>
+                </li>
+                <li class="step nav-item" data-target="#direccion">
+                  <a class="step-trigger nav-link" [ngClass]="{ checked: checked2 }"
+                    (click)="value = 85; $event.preventDefault(); checked2 = true">
+                    <i class=" tim-icons icon-square-pin" (click)="checked2 = true"></i>
+                    <p (click)="checked2 = true">Direccion</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="bs-stepper-content card-body">
+            <div class=" tab-content">
+              <div class="show tab-pane" id="personal">
+                <app-registrostep1 [(wizard)]="wizard" [alumnoForm]="alumnoForm"></app-registrostep1>
+              </div>
+              <div class="show tab-pane" id="imagen">
+                <app-registrostep2  (fileEvent)="capturarImagen($event)"></app-registrostep2>
+              </div>
+              <div class="show tab-pane" id="direccion">
+                <app-registrostep3 [(wizard)]="wizard" [alumnoForm]="alumnoForm"></app-registrostep3>
               </div>
             </div>
-            <div class="bs-stepper-content card-body">
-              <div class=" tab-content">
-                <div class=" tab-pane show" id="personal">
-                  <h5 class=" info-text">
-                    Información básica del nuevo alumno a registrar
-                  </h5>
-                  <app-registrostep1 [(wizard)]="wizard" [alumnoForm]="alumnoForm"></app-registrostep1>
-                </div>
-                <div class="show tab-pane" id="imagen">
-                  <h5 class=" info-text">Ingresa una foto del alumno</h5>
-                  <div class=" row justify-content-center">
-                    <div class=" col-lg-10 text-center">
-                      <app-picture-upload></app-picture-upload>
-                    </div>
-                  </div>
-                </div>
-                <div class="show tab-pane" id="direccion">
-                  <div class=" row justify-content-center">
-                    <div class=" col-sm-12">
-                      <h5 class=" info-text">Are you living in a nice area?</h5>
-                    </div>
-                    <div class=" col-sm-7">
-                      <div class=" form-group">
-                        <label> Street Name </label>
-                        <input class=" form-control" type="text" />
-                      </div>
-                    </div>
-                    <div class=" col-sm-3">
-                      <div class=" form-group">
-                        <label> Street No. </label>
-                        <input class=" form-control" type="text" />
-                      </div>
-                    </div>
-                    <div class=" col-sm-5">
-                      <div class=" form-group">
-                        <label> City </label>
-                        <input class=" form-control" type="text" />
-                      </div>
-                    </div>
-                    <div class=" col-sm-5">
-                      <div class=" form-group">
-                        <label> Country </label>
-                        <angular2-multiselect
-                          [data]="[
-                            {
-                              id: 'Afghanistan',
-                              itemName: ' Afghanistan '
-                            },
-                            { id: 'Albania', itemName: ' Albania ' },
-                            { id: 'Algeria', itemName: ' Algeria ' },
-                            {
-                              id: 'American Samoa',
-                              itemName: ' American Samoa '
-                            },
-                            { id: 'Andorra', itemName: ' Andorra ' },
-                            { id: 'Angola', itemName: ' Angola ' },
-                            { id: 'Anguilla', itemName: ' Anguilla ' },
-                            { id: 'Antarctica', itemName: ' Antarctica ' }
-                          ]"
-                          [ngModel]="multiselect"
-                          formControlName="select"
-                          [settings]="{
-                            singleSelection: true,
-                            text: 'Single Select',
-                            enableSearchFilter: false,
-                            classes: 'selectpicker btn-danger',
-                            lazyLoading: true,
-                            maxHeight: 100
-                          }"
-                        >
-                        </angular2-multiselect>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          </div>
+          <div class=" card-footer">
+            <div class=" pull-right">
+              <input *ngIf="value<85; else finalizar" class=" btn btn-next btn-fill btn-danger btn-wd" name="next" type="button" value="Siguiente"
+              (click)="next()" />  
+              <ng-template #finalizar>
+                <input  class=" btn btn-next btn-fill btn-danger btn-wd" name="finalizar" type="submit" value="Registrar"/>
+              </ng-template>
+           
             </div>
-            <div class=" card-footer">
-              <div class=" pull-right">
-                <input class=" btn btn-next btn-fill btn-danger btn-wd" name="next"
-                  type="submit" value="Siguiente" (click)="next()"/>
-  
-                <input class="btn btn-finish btn-fill btn-primary btn-wd" name="finish"
-                  type="button" value="Finish" />
-              </div>
-              <div class="pull-left">
-                <input class=" btn btn-previous btn-fill btn-default btn-wd" name="previous"
-                  type="button" (click)="previous()" value="Anterior"/>
-              </div>
-              <div class=" clearfix"></div>
+            <div class="pull-left">
+              <input class=" btn btn-previous btn-fill btn-default btn-wd" name="previous" type="button"
+                (click)="previous()" value="Anterior" />
             </div>
-          </form>
-        </div>
+            <div class=" clearfix"></div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
+</div>

@@ -1,6 +1,9 @@
-<div class=" row justify-content-center mt-5" [formGroup]="alumnoForm">
+<h5 class=" info-text">
+  Información básica del nuevo alumno a registrar
+</h5>
+<div class=" row justify-content-center mt-5" [formGroup]="alumnoForm" >
   <div class=" col-sm-5">
-    <div class=" input-group" [ngClass]="{'input-group-focus': focus5 === true, 'has-danger': ((focus5Touched || wizard) &&
+    <div class=" input-group pb-3" [ngClass]="{'input-group-focus': focus5 === true, 'has-danger': ((focus5Touched || wizard) &&
                 registerF.dni.errors) ||(registerF.dni.value != '' && registerF.dni.errors), 
                 'has-success': !registerF.dni.errors}">
       <div class=" input-group-prepend">
@@ -8,12 +11,12 @@
           <i class="tim-icons icon-badge"></i>
         </div>
       </div>
-      <input class=" form-control" name="dni" placeholder="DNI 8 dígitos..." type="number" formControlName="dni"
+      <input class=" form-control" name="dni" autocomplete="off" placeholder="DNI 8 dígitos..." type="number" formControlName="dni"
         (focus)="focus5 = true; focus5Touched = true" (blur)="focus5 = false" />
       <label class="error" *ngIf="((focus5Touched || wizard) && registerF.dni.errors) ||
               (registerF.dni.value != '' && registerF.dni.errors)">Este campo es requerido.</label>
     </div>
-    <div class="input-group" [ngClass]="{'input-group-focus': focus6 === true, 'has-danger': ((focus6Touched || wizard) && 
+    <div class="input-group pb-3" [ngClass]="{'input-group-focus': focus6 === true, 'has-danger': ((focus6Touched || wizard) && 
               registerF.fecha_nac.errors) || (registerF.fecha_nac.value != '' && registerF.fecha_nac.errors),
             'has-success': !registerF.fecha_nac.errors}">
       <div class=" input-group-prepend">
@@ -21,8 +24,8 @@
           <i class="mdi mdi-calendar"> </i>
         </div>
       </div>
-      <input class="form-control" name="fechaNac" placeholder="Fecha Nacimiento..." required=""
-        formControlName="fecha_nac" bsDatepicker type="text" data-datepicker-color="danger"
+      <input class="form-control" name="fechaNac"  placeholder="Fecha Nacimiento..." required=""
+        formControlName="fecha_nac" autocomplete="nope" bsDatepicker type="text" data-datepicker-color="danger"
         [bsConfig]="{ isAnimated: true, containerClass: 'theme-red' }" (focus)="focus6 = true; focus6Touched = true"
         (blur)="focus6 = false" />
       <label class="error" *ngIf="((focus6Touched || wizard) && registerF.fecha_nac.errors) ||
@@ -30,7 +33,7 @@
     </div>
   </div>
   <div class=" col-sm-5">
-    <div class=" input-group" [ngClass]="{'input-group-focus': focus === true, 'has-danger': ((focusTouched || wizard) &&
+    <div class=" input-group pb-3" [ngClass]="{'input-group-focus': focus === true, 'has-danger': ((focusTouched || wizard) &&
               registerF.nombres.errors) ||(registerF.nombres.value != '' && registerF.nombres.errors), 
               'has-success': !registerF.nombres.errors}">
       <div class=" input-group-prepend">
@@ -38,35 +41,35 @@
           <i class=" tim-icons icon-single-02"> </i>
         </div>
       </div>
-      <input class=" form-control" name="nombres" placeholder="Nombres..." type="text" formControlName="nombres"
+      <input class=" form-control" autocomplete="nope" name="nombres" placeholder="Nombres..." type="text" formControlName="nombres"
         (focus)="focus = true; focusTouched = true" (blur)="focus = false" />
       <label class="error" *ngIf="((focusTouched || wizard) && registerF.nombres.errors) ||
             (registerF.nombres.value != '' && registerF.nombres.errors)">Este campo es requerido.</label>
     </div>
-    <div class=" input-group" [ngClass]="{'input-group-focus': focus2 === true,
+    <div class=" input-group pb-3" [ngClass]="{'input-group-focus': focus2 === true,
           'has-danger': ((focus2Touched || wizard) && registerF.apellidos.errors) ||
             (registerF.apellidos.value != '' && registerF.apellidos.errors),
           'has-success': !registerF.apellidos.errors }">
       <div class=" input-group-prepend">
         <div class=" input-group-text">
-          <i class=" tim-icons icon-caps-small"> </i>
+          <i class=" tim-icons icon-single-02"> </i>
         </div>
       </div>
-      <input class=" form-control" name="apellidos" formControlName="apellidos" placeholder="Apellidos..." type="text"
+      <input class=" form-control" name="apellidos" autocomplete="nope" formControlName="apellidos" placeholder="Apellidos..." type="text"
         (focus)="focus2 = true; focus2Touched = true" (blur)="focus2 = false" />
       <label class="error" *ngIf=" ((focus2Touched || wizard) && registerF.apellidos.errors) ||
             (registerF.apellidos.value != '' && registerF.apellidos.errors)">Este campo es requerido.</label>
     </div>
   </div>
   <div class=" col-sm-5">
-    <div class="form-group dropdown" [ngClass]="{'form-group-focus': focus1 === true,
+    <div class="form-group pb-3" [ngClass]="{'form-group-focus': focus1 === true,
       'has-danger': ((focus1Touched || wizard) && registerF.sexo.errors) ||
         (registerF.sexo.lenght > 0 && registerF.sexo.errors),
       'has-success': !registerF.sexo.errors }">
       <angular2-multiselect  name="sexo" (focus)="focus1 = true; focus1Touched = true" (blur)="focus1 = false" [data]="[
             {id: 'Masculino', itemName: 'Masculino'},
             {id: 'Femenino', itemName: 'Femenino' }]" 
-            [ngModel]="multiselect" formControlName="sexo" [settings]="{
+            [ngModel]="multiselect1" formControlName="sexo" [settings]="{
             singleSelection: true,
             text: 'Seleccione Genero...',
             enableSearchFilter: false,
@@ -80,31 +83,65 @@
       <label class="error" *ngIf=" ((focus1Touched || wizard) && registerF.sexo.errors) ||
             (registerF.sexo.lenght>0 && registerF.sexo.errors)">Este campo es requerido.</label>
     </div>
-
-    <div class=" input-group" [ngClass]="{'input-group-focus': focus3 === true,
-          'has-danger': ((focus3Touched || wizard) && registerF.phone.errors) ||
-            (registerF.phone.value != '' && registerF.phone.errors),
-          'has-success': !registerF.phone.errors }">
-      <div class=" input-group-prepend">
-        <div class=" input-group-text">
-          <i class=" tim-icons icon-mobile"> </i>
+    <div class=" row pb-3">
+      <label class=" col-12 col-form-label">
+        Actualmente vive con . . .
+      </label>
+      <div class="col-12 row ml-2 mb-3">
+        <div class=" form-check form-check-radio col-lg-4">
+          <label class="form-check-label">
+            <input checked="checked" class="form-check-input" formControlName="familia" name="familia" id="radio_ambos"
+                  type="radio" value="ambos" />
+            <span class="form-check-sign"> </span> Ambos Padres
+          </label>
+        </div>
+        <div class=" form-check form-check-radio col-lg-4">
+          <label class=" form-check-label">
+            <input  class="form-check-input" formControlName="familia" name="familia" id="radio_padre"
+                   type="radio" value="padre" />
+            <span class="form-check-sign"> </span> Solo Padre
+          </label>
+        </div>
+        <div class="form-check form-check-radio col-lg-4">
+          <label class="form-check-label">
+            <input  class="form-check-input" formControlName="familia" name="familia" id="radio_madre"
+                   type="radio" value="madre" />
+            <span class="form-check-sign"> </span> Solo Madre
+          </label>
+        </div>
+        <div class="form-check form-check-radio col-lg-3 pt-lg-3">
+          <label class="form-check-label">
+            <input  class="form-check-input" formControlName="familia" name="familia" id="radio_otros"
+                   type="radio" value="otros" />
+            <span class="form-check-sign"> </span> Otros
+          </label>
+        </div>
+        <div class="input-group col-lg-9 pt-3">
+          <input class=" form-control"
+            autocomplete="nope" name="familiaotro" placeholder="Especifique ..." type="text" formControlName="otro"/>
         </div>
       </div>
-      <input class=" form-control" name="number" placeholder="Phone..." formControlName="phone" type="number"
-        (focus)="focus3 = true; focus3Touched = true" (blur)="focus3 = false" />
-      <label class="error" *ngIf="((focus3Touched || wizard) && registerF.phone.errors) ||
-            (registerF.phone.value != '' && registerF.phone.errors)">Este campo es requerido.</label>
     </div>
+    
   </div>
   <div class="col-sm-5">
-    <div class="input-group" [ngClass]="{ 'input-group-focus': focus4 === true }">
+    <div class="input-group pb-3"  [ngClass]="{'input-group-focus': focus4 === true }">
       <div class="input-group-prepend">
         <div class="input-group-text">
-          <i class="tim-icons icon-square-pin"> </i>
+          <i class="mdi mdi-deskphone"> </i>
         </div>
       </div>
-      <input class=" form-control" name="address" placeholder="Address" type="text" (focus)="focus4 = true"
-        (blur)="focus4 = false" />
+      <input class="form-control" autocomplete="nope" name="telefono" formControlName="telefono" placeholder="Telefono" type="number" 
+      (focus)="focus4 = true" (blur)="focus4 = false" />
+    </div>
+    <div class="input-group" [ngClass]="{'input-group-focus': focus7 === true }">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <i class="mdi mdi-home-variant"> </i>
+        </div>
+      </div>
+      <input class="form-control"  autocomplete="nope" name="colegio_proc" formControlName="colegio_proc" placeholder="Colegio Procedencia..." type="text" 
+      (focus)="focus7 = true" (blur)="focus7 = false" />
     </div>
   </div>
 </div>

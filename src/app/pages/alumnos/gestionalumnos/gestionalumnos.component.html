@@ -1,11 +1,13 @@
 <div class=" content">
-    <div class=" row mt-5">
+    <ngx-spinner bdColor="rgba(0, 0, 0, 1)">
+        <img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />
+    </ngx-spinner>
+    <div class=" row mt-5 ml-auto mr-auto">
         <div class="card">
-            <ngx-spinner bdColor="rgba(0, 0, 0, 1)">
-                <img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />
-            </ngx-spinner>
-            <app-filtrar-nivel-grado-seccion [(grado)]="grado" [(nivel)]="nivel" [(seccion)]="seccion"
-                (enviarEvento)="filtrarAlumnos()"></app-filtrar-nivel-grado-seccion>
+            <div class=" card-body">
+                <app-filtrar-nivel-grado-seccion [(grado)]="grado" [(nivel)]="nivel" [(seccion)]="seccion"
+                    (enviarEvento)="filtrarAlumnos()"></app-filtrar-nivel-grado-seccion>
+            </div>
         </div>
     </div>
     <div class="col-md-8 ml-auto mr-auto">
@@ -27,7 +29,7 @@
                                                 <option value="25" [selected]="entries == 25">25</option>
                                                 <option value="50" [selected]="entries == 50">50</option>
                                                 <option value="-1" [selected]="entries == -1">All</option>
-                                            </select> entradas
+                                            </select> registros
                                         </label>
                                     </div>
                                 </div>
@@ -41,85 +43,70 @@
                                     </div>
                                 </div>
                             </div>
-                            <ngx-datatable
-                            id="print-section"
-                            class="bootstrap selection-cell"
-                            [columnMode]="'force'"
-                            [headerHeight]="50"
-                            [footerHeight]="50"
-                            [rowHeight]="'auto'"
-                            [limit]="entries != -1 ? entries : undefined"
-                            [rows]="temp"
-                            [selected]="selected"
-                            [selectionType]="'multiClick'"
-                            (activate)="onActivate($event)"
-                            (select)="onSelect($event)"
-                          >
-                          <ngx-datatable-column>
-                            <ng-template ngx-datatable-header-template>
-                                <span>Ver</span>
-                              </ng-template>
-                            <ng-template let-row="row" ngx-datatable-cell-template>
-                                <i class="mdi mdi-eye" id="verdeta" (click)="verDetalleAlumno(alumno)" aria-hidden="true" style="cursor: pointer; font-size: 25px;"></i>
-                            </ng-template>
-                        </ngx-datatable-column>
-                            <ngx-datatable-column>
-                                <ng-template ngx-datatable-header-template>
-                                    <span>DNI</span>
-                                  </ng-template>
-                                  <ng-template let-row="row" ngx-datatable-cell-template>
-                                    {{row.persona.dni}}
-                                  </ng-template>
-                            </ngx-datatable-column>
-                            <ngx-datatable-column >
-                                <ng-template ngx-datatable-header-template>
-                                    <span>Nombre</span>
-                                  </ng-template>
-                                  <ng-template let-row="row" ngx-datatable-cell-template>
-                                    {{row.persona.nombres + ' ' + row.persona.apellidos}}
-                                  </ng-template>
-                            </ngx-datatable-column>
-                            <ngx-datatable-column>
-                                <ng-template ngx-datatable-header-template>
-                                    <span>Años de estudio</span>
-                                  </ng-template>
-                                  <ng-template let-row="row" ngx-datatable-cell-template>
-                                    {{row.ano_estudio}}
-                                  </ng-template>
-                            </ngx-datatable-column>
-                            <ngx-datatable-column>
-                                <ng-template ngx-datatable-header-template>
-                                    <span>Promedio</span>
-                                  </ng-template>
-                                  <ng-template let-row="row" ngx-datatable-cell-template>
-                                    {{row.promedioGeneral}}
-                                  </ng-template>
-                            </ngx-datatable-column>
-                            <ngx-datatable-column>
-                                <ng-template ngx-datatable-header-template>
-                                    <span>Estado</span>
-                                </ng-template>
-                                <ng-template let-row="row" ngx-datatable-cell-template>
-                                    {{row.estado==0?'No Matriculado':row.estado==1?'Matriculado':'Suspendido'}}
-                                </ng-template>
-                            </ngx-datatable-column>
-                            <ngx-datatable-column>
-                                <ng-template ngx-datatable-header-template>
-                                    <span>Actualizar</span>
-                                  </ng-template>
-                                <ng-template let-row="row" ngx-datatable-cell-template>
-                                    <i class="mdi mdi-pencil" id="edital" (click)="editarAlumno(alumno)" aria-hidden="true" style="cursor: pointer; font-size: 25px;"></i>
-                                </ng-template>
-                            </ngx-datatable-column>
-                            <ngx-datatable-column>
-                                <ng-template ngx-datatable-header-template>
-                                    <span>Dar baja</span>
-                                  </ng-template>
-                                <ng-template let-row="row" ngx-datatable-cell-template>
-                                    <i class="mdi mdi-delete" id="darbaja" (click)="darBajaAlumno(alumno)" aria-hidden="true" style="cursor: pointer; font-size: 25px;"></i>
-                                </ng-template>
-                            </ngx-datatable-column>
-                            
+                            <ngx-datatable id="print-section" class="bootstrap selection-cell" [columnMode]="'force'"
+                                [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
+                                [limit]="entries != -1 ? entries : undefined" [rows]="temp"
+                                [scrollbarH]="true" [@tableAnimation]="'in'">
+                                <ngx-datatable-column>
+                                    <ng-template ngx-datatable-header-template >
+                                        <span>Ver</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                        <i class="mdi mdi-eye" id="verdeta" (click)="verDetalleAlumno(row)"
+                                            style="cursor: pointer; font-size: 25px;"></i>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column >
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>DNI</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                        {{row.persona.dni}}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column>
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>Nombre</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                        {{row.persona.nombres + ' ' + row.persona.apellidos}}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column>
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>Promedio</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                        {{row.promedioGeneral}}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column>
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>Estado</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                        {{row.estado==0?'No Matriculado':row.estado==1?'Matriculado':'Suspendido'}}
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column>
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>Actualizar</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                        <i class="mdi mdi-pencil" id="edital" (click)="editarAlumno(alumno)"
+                                            aria-hidden="true" style="cursor: pointer; font-size: 25px;"></i>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column>
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>Dar baja</span>
+                                    </ng-template>
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                        <i class="mdi mdi-delete" id="darbaja" (click)="darBajaAlumno(alumno)"
+                                            aria-hidden="true" style="cursor: pointer; font-size: 25px;"></i>
+                                    </ng-template>
+                                </ngx-datatable-column>
+
                             </ngx-datatable>
                         </div>
                     </div>

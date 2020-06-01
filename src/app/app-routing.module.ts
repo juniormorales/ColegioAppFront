@@ -40,6 +40,10 @@ const routes: Routes = [
         loadChildren: "./pages/alumnos/alumnos.module#AlumnosModule"
       },
       {
+        path: "administracion",
+        loadChildren: "./pages/administracion/administracion.module#AdministracionModule"
+      },
+      {
         path: "maps",
         loadChildren: "./pages/examples/maps/maps.module#MapsModule"
       },

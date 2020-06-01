@@ -1,0 +1,155 @@
+<h1 class="w-100 text-center text-dark">Detalles del registro del alumno </h1>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="card color-card-info">
+                <div class="card-header">
+                    <h3 class="card-title text-center"> <strong>
+                            <p>Información Personal</p>
+                        </strong></h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>Nombres: </strong> {{alumno.persona.nombres}}</p>
+                        </div>
+                        <div class="col">
+                            <p><strong>Apellidos: </strong>{{alumno.persona.apellidos}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>Género: </strong>{{alumno.persona.sexo}}</p>
+                        </div>
+                        <div class="col">
+                            <p><strong>Edad: </strong>{{edad}} años</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>Vive con: </strong>{{alumno.familia}}</p>
+                        </div>
+                        <div class="col">
+                            <p><strong>Telefono: </strong>{{alumno.persona.telefono}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card color-card-info">
+
+                <div class="card-header">
+                    <h3 class=" card-title text-center"> <strong>
+                            <p>Direcciones</p>
+                        </strong></h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>Dirección domicilio: </strong>{{alumno.persona.direccion}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>Departamento: </strong>{{alumno.persona.departamento.descripcion}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>Provincia: </strong>{{alumno.persona.provincia.descripcion}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>Distrito: </strong>{{alumno.persona.distrito.descripcion}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>Tipo de Zona:
+                                </strong>{{alumno.persona.tipoZona==null?'No Especificado':alumno.persona.tipoZona.descripcion}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card-container">
+            <div class="card">
+                <div class="front  color-card-info">
+                    <div class="card-header">
+                        <h3 class=" card-title text-center"> <strong>
+                                <p>Ficha de Alumno</p>
+                            </strong></h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="cover">
+                            <img src="../../../../../../../assets/img/fondo_colegio.jpg" />
+                        </div>
+                        <div class="user">
+                            <img height="180" [src]="imgURL" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <div class="col">
+                                    <p><strong>Años de estudio: </strong>{{alumno.anosEstudio}}</p>
+                                </div>
+                                <div class="col">
+                                    <p><strong>Promedio General: </strong>{{alumno.promedioGeneral.toFixed(2)}}
+                                    </p>
+                                </div>
+                                <div class="col">
+                                    <p><strong>Numero de repitencias: </strong>{{alumno.nroRepitencias}}</p>
+                                </div>
+                                <div class="col">
+                                    <p><strong>Estado del alumno:
+                                        </strong>{{alumno.estado==0?'No Matriculado':alumno.estado==1?'Matriculado':'Suspendido'}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <i class="fa fa-mail-forward"></i> Auto Rotation
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="back color-card-info">
+                    <div class="card-header">
+                        <h3 class=" card-title text-center"> <strong>
+                                <p>Registro de Matricula del periodo {{ano_actual}}</p>
+                            </strong></h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center" *ngIf="alumno.estado !== 1 ; else matriculado">
+                            <p>!El alumno {{alumno.persona.nombres + ' ' + alumno.persona.apellidos}} no presenta
+                                matricula actualmente!</p>
+                        </div>
+                        <ng-template #matriculado>
+                            <div class="col">
+                                <p><strong>Nivel: </strong></p>
+                            </div>
+                            <div class="col">
+                                <p><strong>Grado: </strong></p>
+                            </div>
+                            <div class="col">
+                                <p><strong>Seccion: </strong></p>
+                            </div>
+                            <div class="col">
+                                <p><strong>Promedio anual: </strong></p>
+                            </div>
+                            <div class="col">
+                                <p><strong>Orden de mérito: </strong></p>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

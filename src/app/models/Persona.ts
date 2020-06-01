@@ -8,4 +8,9 @@ export class Persona{
     public sexo: String;
     public dni: number;
     public urlFoto: String;
+    public tipoZona: any;
+    public departamento: any;
+    public provincia: any;
+    public distrito: any;
+    public telefono: number;
 }

@@ -1,1 +1,77 @@
-<p>registrostep3 works!</p>
+<h5 class=" info-text">
+    Direcciones de residencia del alumno
+</h5>
+<div class="row justify-content-center" [formGroup]="alumnoForm">
+    <div class="row col-12 justify-content-center">
+        <div class=" col-lg-7">
+            <label>Direccion Domiciliaria</label>
+            <div class=" input-group pb-3" [ngClass]="{'input-group-focus': focus === true, 'has-danger': ((focusTouched || wizard) &&
+            registerF.dir_domicilio.errors) ||(registerF.dir_domicilio.value != '' && registerF.dir_domicilio.errors), 
+            'has-success': !registerF.dir_domicilio.errors}">
+                <div class=" input-group-prepend">
+                    <div class=" input-group-text">
+                        <i class=" tim-icons icon-single-02"> </i>
+                    </div>
+                </div>
+                <input class=" form-control" autocomplete="nope" name="dir_domicilio" placeholder="Av. Mz. Lt..."
+                    type="text" formControlName="dir_domicilio" (focus)="focus = true; focusTouched = true"
+                    (blur)="focus = false" />
+                <label class="error" *ngIf="((focusTouched || wizard) && registerF.dir_domicilio.errors) ||
+                    (registerF.dir_domicilio.value != '' && registerF.dir_domicilio.errors)">Este campo es
+                    requerido.</label>
+            </div>
+        </div>
+        <div class=" col-lg-4">
+            <label>Tipo de Zona</label>
+            <div class="form-group pb-3">
+                <angular2-multiselect name="tip_zona" [data]="dataTipZona" formControlName="tip_zona"
+                    [settings]="settingsGeneral">
+                </angular2-multiselect>
+            </div>
+        </div>
+    </div>
+    <div class="row col-12 justify-content-center">
+        <div class=" col-lg-3">
+            <label>Departamento</label>
+            <div class="form-group pb-3" [ngClass]="{'form-group-focus': focus1 === true,
+            'has-danger': ((focus1Touched || wizard) && registerF.departamento.errors) ||
+              (registerF.departamento.lenght > 0 && registerF.departamento.errors),
+            'has-success': !registerF.departamento.errors }">
+                <angular2-multiselect name="departamento" (focus)="focus1 = true; focus1Touched = true"
+                    (blur)="focus1 = false" [data]="dataDep" formControlName="departamento"
+                    [settings]="settingsGeneral" (onSelect)="onDepartamentoSelect($event)" >
+                </angular2-multiselect>
+                <label class="error" *ngIf=" ((focus1Touched || wizard) && registerF.departamento.errors) ||
+                        (registerF.departamento.lenght>0 && registerF.departamento.errors)">Este campo es
+                    requerido.</label>
+            </div>
+        </div>
+        <div class=" col-lg-4">
+            <label>Provincia</label>
+            <div class="form-group pb-3" [ngClass]="{'form-group-focus': focus2 === true,
+            'has-danger': ((focus2Touched || wizard) && registerF.provincia.errors) ||
+              (registerF.provincia.lenght > 0 && registerF.provincia.errors),
+            'has-success': !registerF.provincia.errors }">
+                <angular2-multiselect name="provincia" (focus)="focus2 = true; focus2Touched = true"
+                    (blur)="focus2 = false" [data]="dataProv" formControlName="provincia"  [(ngModel)]="selecProv"
+                    [settings]="settingsGeneral" (onSelect)="onProvinciaSelect($event)">
+                </angular2-multiselect>
+                <label class="error" *ngIf=" ((focus2Touched || wizard) && registerF.provincia.errors) ||
+                    (registerF.provincia.lenght>0 && registerF.provincia.errors)">Este campo es requerido.</label>
+            </div>
+        </div>
+        <div class=" col-lg-4">
+            <label>Distrito</label>
+            <div class="form-group pb-3" [ngClass]="{'form-group-focus': focus3 === true,
+            'has-danger': ((focus3Touched || wizard) && registerF.distrito.errors) ||
+              (registerF.distrito.lenght > 0 && registerF.distrito.errors),
+            'has-success': !registerF.distrito.errors }">
+                <angular2-multiselect name="distrito" (focus)="focus3 = true; focus3Touched = true"
+                    (blur)="focus3 = false" [data]="dataDist" formControlName="distrito" [settings]="settingsGeneral">
+                </angular2-multiselect>
+                <label class="error" *ngIf=" ((focus3Touched || wizard) && registerF.distrito.errors) ||
+                    (registerF.distrito.lenght>0 && registerF.distrito.errors)">Este campo es requerido.</label>
+            </div>
+        </div>
+    </div>
+</div>

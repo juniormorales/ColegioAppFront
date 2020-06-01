@@ -252,7 +252,7 @@ export const ROUTES: RouteInfo[] = [
         rtlSmallTitle: " ص",
         title: "Gestion Alumnos",
         type: "link",
-        smallTitle: "RT"
+        smallTitle: "GA"
       },
       {
         path:"registroalumno",
@@ -260,8 +260,34 @@ export const ROUTES: RouteInfo[] = [
         rtlSmallTitle: " ص",
         title: "Registro Alumnos",
         type: "link",
-        smallTitle: "RT"
+        smallTitle: "RA"
+      },
+      {
+        path:"matricula",
+        rtlTitle: "الجداول العادية",
+        rtlSmallTitle: " ص",
+        title: "Matricula virtual",
+        type: "link",
+        smallTitle: "MV"
       }
+    ]
+  },
+  {
+    path: "/administracion",
+    title: "Administración",
+    type: "sub",
+    icontype: "tim-icons icon-settings",
+    isCollapsed: true,
+    rtlTitle: "",
+    children: [
+     {
+       path: "ambientes",
+       rtlTitle: "",
+       rtlSmallTitle: "",
+       title: "Ambientes",
+       type: "link",
+       smallTitle: "AU"
+     }
     ]
   },
   {
@@ -357,6 +383,43 @@ export const ROUTES: RouteInfo[] = [
   }
 ];
 
+
+/*
+export const ROUTES: RouteInfo[] = [{
+  path: "/alumnos",
+  type: "sub",
+  title: "Alumnos",
+  icontype: "mdi mdi-account",
+  collapse: "alumnos",
+  rtlTitle: "ARABE XDXD",
+  isCollapsed: true,
+  children: [
+    {
+      path:"gestionalumnos",
+      rtlTitle: "الجداول العادية",
+      rtlSmallTitle: " ص",
+      title: "Gestion Alumnos",
+      type: "link",
+      smallTitle: "GA"
+    },
+    {
+      path:"registroalumno",
+      rtlTitle: "الجداول العادية",
+      rtlSmallTitle: " ص",
+      title: "Registro Alumnos",
+      type: "link",
+      smallTitle: "RA"
+    },
+    {
+      path:"matricula",
+      rtlTitle: "الجداول العادية",
+      rtlSmallTitle: " ص",
+      title: "Matricula virtual",
+      type: "link",
+      smallTitle: "MV"
+    }
+  ]
+},]*/
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",

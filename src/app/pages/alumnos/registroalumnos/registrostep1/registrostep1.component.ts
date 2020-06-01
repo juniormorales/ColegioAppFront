@@ -3,15 +3,15 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-registrostep1',
-  templateUrl: './registrostep1.component.html',
-  styleUrls: ['./registrostep1.component.scss']
+  templateUrl: './registrostep1.component.html'
 })
 export class Registrostep1Component implements OnInit {
 
   @Input() alumnoForm: FormGroup;
   @Input() wizard;
 
-  multiselect: any = [];
+  multiselect1: any = [];
+  multiselect2: any = [];
   focus;
   focus1;
   focus2;
@@ -19,6 +19,7 @@ export class Registrostep1Component implements OnInit {
   focus4;//No tiene validator
   focus5;
   focus6;
+  focus7;
   focusTouched;
   focus1Touched;
   focus2Touched;

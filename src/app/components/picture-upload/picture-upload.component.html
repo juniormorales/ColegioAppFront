@@ -4,18 +4,10 @@
     <img src="{{ imagePreviewUrl }}" alt="..." />
   </div>
   <div>
-    <button
-      *ngIf="file === null && avatar"
-      class="btn-round btn btn-danger"
-      (click)="handleClick()"
-    >
+    <button *ngIf="file === null && avatar" class="btn-round btn btn-danger" (click)="handleClick()">
       Agregar Foto
     </button>
-    <button
-      *ngIf="file === null && !avatar"
-      class="btn-round btn btn-primary"
-      (click)="handleClick()"
-    >
+    <button *ngIf="file === null && !avatar" class="btn-round btn btn-primary" (click)="handleClick()">
       Seleccionar Imagen
     </button>
     <span *ngIf="file !== null">

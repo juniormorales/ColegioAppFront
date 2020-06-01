@@ -1,0 +1,53 @@
+<div class=" content">
+    <div class=" row mt-5 ml-auto mr-auto">
+        <ol class=" breadcrumb bg-transparent ml-3">
+            <li class=" breadcrumb-item active"><a routerLink="/administracion/ambientes/gestionambiente">Ambientes</a></li>
+            <li class=" breadcrumb-item active">Tipos de Ambiente</li>
+          </ol>
+        <div class="card">
+            <div class=" card-body">
+                <div class="col">
+                    <div class="button-group">
+                        <button class="btn btn-primary" (click)="nuevoTipoAmbiente()">Nuevo Tipo ambiente</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 ml-auto mr-auto">
+        <h2 class=" text-center">Tipos de Ambiente registrados</h2>
+    </div>
+    <div class="row mt-5">
+        <div class=" col-md-12">
+            <div class="card">
+                <div class=" card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                                <tr>
+                                    <th class="text-center">Nombre</th>
+                                    <th class="text-center">Actualizar</th>
+                                    <th class="text-center">Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let tipoambiente of lsTiposAmbiente">
+                                <tr>
+                                    <td class="text-center">{{tipoambiente.descripcion}}</td>
+                                    <td class="text-center">
+                                        <button class=" btn btn-success btn-link btn-md btn-icon" tooltip="Refresh" type="button">
+                                            <i class=" tim-icons icon-refresh-01"> </i>
+                                        </button></td>
+                                    <td class="text-center">
+                                        <button class=" btn btn-danger btn-link btn-md" tooltip="Delete" type="button">
+                                            <i class=" tim-icons icon-simple-remove"> </i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

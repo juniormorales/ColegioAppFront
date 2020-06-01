@@ -1,0 +1,32 @@
+<div class="card mb-0">
+    <div class="card-header">
+        <button aria-hidden="true" class=" close btn-outline-danger btn-lg btn-danger" (click)="cerrarModal()" type="button">
+            <i class=" tim-icons icon-simple-remove"></i>
+        </button>
+        <h6 class="card-title">{{input_tipo_ambiente!=null?'Actualizar Tipo Ambiente':'Nuevo Tipo Ambiente'}} </h6>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="tipoAmbienteForm" (ngSubmit)="registrarTipoAmbiente()">
+            <div class=" row ml-3 mr-3">
+                <div class="col-12">
+                    <label>Descripcion</label>
+                    <div class=" input-group pb-3" [ngClass]="{'input-group-focus': focus === true, 'has-danger': (focusTouched  &&
+                        registerF.descripcion.errors) ||(registerF.descripcion.value != null && registerF.descripcion.errors), 
+                        'has-success': !registerF.descripcion.errors}">
+                        <input class=" form-control black" name="descripcion" autocomplete="off" type="text"
+                            formControlName="descripcion" (focus)="focus = true; focusTouched = true"
+                            (blur)="focus = false" />
+                        <label class="error w-100"  *ngIf="((focusTouched) && registerF.descripcion.errors) ||
+                      (registerF.descripcion.value !=  null && registerF.descripcion.errors)">Este campo es
+                            requerido.</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer mt-0">
+        <div class="row p-3">
+            <button type="button" class="btn btn-primary  btn-lg btn-block" (click)="crud()">{{input_tipo_ambiente!=null?'Actualizar':'Registrar'}}</button>
+        </div>
+    </div>
+</div>

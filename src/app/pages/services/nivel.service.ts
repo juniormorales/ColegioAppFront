@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
   export class NivelService {
   
     constructor(
-      public http: HttpClient
+      public http: HttpClient,
     ) { }
 
     public listarNiveles(){

@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <button aria-hidden="true" class=" close btn-outline-danger btn-lg" (click)="cerrarModal()" type="button">
+        <i class=" tim-icons icon-simple-remove"></i>
+    </button>
+    <h6 class="modal-title">{{input_ambiente!=null?'Actualizar Ambiente':'Nuevo Ambiente'}} </h6>
+</div>
+<div class="modal-body">
+    <form [formGroup]="ambienteForm" (ngSubmit)="registrarAmbiente()">
+        <div class=" row ml-3 mr-3">
+            <div class="col-12 col-md-6">
+                <label>Numero del salon</label>
+                <div class=" input-group pb-3" [ngClass]="{'input-group-focus': focus === true, 'has-danger': (focusTouched  &&
+                    registerF.numero.errors) ||(registerF.numero.value != null && registerF.numero.errors), 
+                    'has-success': !registerF.numero.errors}">
+                    <input class=" form-control" name="numero" autocomplete="off" type="number" formControlName="numero"
+                        (focus)="focus = true; focusTouched = true" (blur)="focus = false" />
+                    <label class="error" *ngIf="((focusTouched) && registerF.numero.errors) ||
+                  (registerF.numero.value !=  null && registerF.numero.errors)">Este campo es requerido.</label>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <label>Capacidad de alumnos</label>
+                <div class=" input-group pb-3" [ngClass]="{'input-group-focus': focus1 === true, 'has-danger': (focus1Touched  &&
+                    registerF.capacidad.errors) ||(registerF.capacidad.value != null && registerF.capacidad.errors), 
+                    'has-success': !registerF.capacidad.errors}">
+                    <input class=" form-control" name="capacidad" autocomplete="off" type="number"
+                        formControlName="capacidad" (focus)="focus1 = true; focus1Touched = true"
+                        (blur)="focus1 = false" />
+                    <label class="error" *ngIf="((focus1Touched && registerF.capacidad.errors) ||
+                  (registerF.capacidad.value !=  null && registerF.capacidad.errors))">Este campo es requerido.</label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer d-flex flex-row-reverse">
+    <div class="row pr-3">
+        <button type="button" class="btn btn-primary  btn-lg btn-block">{{input_ambiente!=null?'Actualizar':'Registrar'}}</button>
+    </div>
+</div>

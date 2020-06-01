@@ -2,10 +2,12 @@ import { Persona } from './Persona';
 
 export class Alumno{
 
-    public idAlumno?:number;
+    public idAlumno:number;
     public promedioGeneral?:number;
-    public ano_estudio?:number;
-    public nro_repitencias?:number;
-    public estado?:number;
-    public persona: Persona;
+    public anosEstudio:number;
+    public nroRepitencias:number;
+    public colegioProcedencia: string;
+    public familia: string;
+    public estado:number;
+    public persona: Persona = new Persona();
 }

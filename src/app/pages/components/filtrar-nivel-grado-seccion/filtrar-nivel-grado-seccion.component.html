@@ -1,20 +1,30 @@
-<div class="col-12 pt-3">
-    <div class="form-group row">
-        <div class="col-3 form-group row">
-            <button type="button" class="col-8 btn btn-info"  id="btnFilter" (click)="emitirFiltro()">Filtrar</button>
-            <label class="col-4 col-form-label" for="btnFilter">Filtrar por:</label>
+
+<div class="row p-3">
+    <div class="col-12 col-lg-2 form-group pt-2">
+            <button type="button" class="btn btn-info btn-lg btn-block"  id="btnFilter" (click)="emitirFiltro()">Filtrar</button>
+    </div>
+    <div class="col-12 col-md-4 col-lg-3">
+        <label>Nivel</label>
+        <div class="form-group">
+            <angular2-multiselect name="selecNivel" [data]="dataNivel" [(ngModel)]="selecNivel"
+                [settings]="settingsNivel" (onSelect)="onNivelSelect($event)">
+            </angular2-multiselect>
         </div>
-        <div class="col-3 form-group row">
-            <label class="col-2 col-form-label" for="selectNivel">Nivel:</label>
-            <ng-select class="col-10" id="selectNivel"  [items]="lsNivel" bindLabel="descripcion" bindValue="idNivel" placeholder="seleccione" [(ngModel)]="nivel.idNivel" (ngModelChange)="changeNivel($event)"></ng-select>
+    </div>
+    <div class="col-12 col-md-4 col-lg-3">
+        <label>Grado</label>
+        <div class="form-group"> 
+            <angular2-multiselect name="selecGrado" [data]="dataGrado" [(ngModel)]="selecGrado"
+                [settings]="settingsGeneral" (onSelect)="onGradoSelect($event)">
+            </angular2-multiselect>
         </div>
-        <div class="col-3 form-group row">
-            <label class="col-2 col-form-label" for="selectGrado">Grado:</label>
-            <ng-select class="col-10" id="selectGrado"  [items]="lsGrado" bindLabel="descripcion" bindValue="idGrado" placeholder="seleccione" [(ngModel)]="grado.idGrado"></ng-select>
-        </div>
-        <div class="col-3 form-group row">
-            <label class="col-3 col-form-label" for="selectSec">Seccion:</label>
-            <ng-select class="col-9" id="selectSecc" [items]="lsSeccion" bindLabel="descripcion" bindValue="idSeccion" placeholder="seleccione" [(ngModel)]="seccion.idSeccion"></ng-select>
+    </div>
+    <div class="col-12 col-md-4 col-lg-3">
+        <label>Seccion</label>
+        <div class="form-group">
+            <angular2-multiselect name="selecSeccion" [data]="dataSeccion" [(ngModel)]="selecSeccion"
+                [settings]="settingsGeneral" (onSelect)="onSeccionSelect($event)">
+            </angular2-multiselect>
         </div>
     </div>
 </div>

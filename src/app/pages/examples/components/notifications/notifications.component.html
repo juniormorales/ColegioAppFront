@@ -10,29 +10,13 @@
             <span> This is a plain notification </span>
           </alert>
           <alert [type]="'info'">
-            <button
-              aria-hidden="true"
-              aria-label="Close"
-              class=" close"
-              data-dismiss="alert"
-              type="button"
-            >
+            <button aria-hidden="true" aria-label="Close" class=" close" data-dismiss="alert" type="button">
               <i class=" tim-icons icon-simple-remove"> </i>
             </button>
             <span> This is a notification with close button. </span>
           </alert>
-          <alert
-            class=""
-            data-notify="container"
-            [type]="'info alert-with-icon'"
-          >
-            <button
-              aria-hidden="true"
-              aria-label="Close"
-              class=" close"
-              data-dismiss="alert"
-              type="button"
-            >
+          <alert class="" data-notify="container" [type]="'info alert-with-icon'">
+            <button aria-hidden="true" aria-label="Close" class=" close" data-dismiss="alert" type="button">
               <i class=" tim-icons icon-simple-remove"> </i>
             </button>
             <span class=" tim-icons icon-bell-55" data-notify="icon"> </span>
@@ -40,18 +24,8 @@
               This is a notification with close button and icon.
             </span>
           </alert>
-          <alert
-            class=""
-            data-notify="container"
-            [type]="'info alert-with-icon'"
-          >
-            <button
-              aria-hidden="true"
-              aria-label="Close"
-              class=" close"
-              data-dismiss="alert"
-              type="button"
-            >
+          <alert class="" data-notify="container" [type]="'info alert-with-icon'">
+            <button aria-hidden="true" aria-label="Close" class=" close" data-dismiss="alert" type="button">
               <i class=" tim-icons icon-simple-remove"> </i>
             </button>
             <span class=" tim-icons icon-bell-55" data-notify="icon"> </span>
@@ -72,13 +46,7 @@
         </div>
         <div class=" card-body">
           <alert [type]="'primary'">
-            <button
-              aria-hidden="true"
-              aria-label="Close"
-              class=" close"
-              data-dismiss="alert"
-              type="button"
-            >
+            <button aria-hidden="true" aria-label="Close" class=" close" data-dismiss="alert" type="button">
               <i class=" tim-icons icon-simple-remove"> </i>
             </button>
             <span>
@@ -87,13 +55,7 @@
             </span>
           </alert>
           <alert [type]="'info'">
-            <button
-              aria-hidden="true"
-              aria-label="Close"
-              class=" close"
-              data-dismiss="alert"
-              type="button"
-            >
+            <button aria-hidden="true" aria-label="Close" class=" close" data-dismiss="alert" type="button">
               <i class=" tim-icons icon-simple-remove"> </i>
             </button>
             <span>
@@ -102,13 +64,7 @@
             </span>
           </alert>
           <alert [type]="'success'">
-            <button
-              aria-hidden="true"
-              aria-label="Close"
-              class=" close"
-              data-dismiss="alert"
-              type="button"
-            >
+            <button aria-hidden="true" aria-label="Close" class=" close" data-dismiss="alert" type="button">
               <i class=" tim-icons icon-simple-remove"> </i>
             </button>
             <span>
@@ -117,13 +73,7 @@
             </span>
           </alert>
           <alert [type]="'warning'">
-            <button
-              aria-hidden="true"
-              aria-label="Close"
-              class=" close"
-              data-dismiss="alert"
-              type="button"
-            >
+            <button aria-hidden="true" aria-label="Close" class=" close" data-dismiss="alert" type="button">
               <i class=" tim-icons icon-simple-remove"> </i>
             </button>
             <span>
@@ -132,13 +82,7 @@
             </span>
           </alert>
           <alert [type]="'danger'">
-            <button
-              aria-hidden="true"
-              aria-label="Close"
-              class=" close"
-              data-dismiss="alert"
-              type="button"
-            >
+            <button aria-hidden="true" aria-label="Close" class=" close" data-dismiss="alert" type="button">
               <i class=" tim-icons icon-simple-remove"> </i>
             </button>
             <span>
@@ -163,26 +107,17 @@
               <div class=" col-lg-8 ml-auto mr-auto">
                 <div class=" row">
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('top', 'left')"
-                    >
+                    <button class=" btn btn-danger btn-block" (click)="showNotification('top', 'left')">
                       Top Left
                     </button>
                   </div>
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('top', 'center')"
-                    >
+                    <button class=" btn btn-danger btn-block" (click)="showNotification('top', 'center')">
                       Top Center
                     </button>
                   </div>
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('top', 'right')"
-                    >
+                    <button class=" btn btn-danger btn-block" (click)="showNotification('top', 'right')">
                       Top Right
                     </button>
                   </div>
@@ -193,26 +128,17 @@
               <div class=" col-lg-8 ml-auto mr-auto">
                 <div class=" row">
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('bottom', 'left')"
-                    >
+                    <button class=" btn btn-danger btn-block" (click)="showNotification('bottom', 'left')">
                       Bottom Left
                     </button>
                   </div>
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('bottom', 'center')"
-                    >
+                    <button class=" btn btn-danger btn-block" (click)="showNotification('bottom', 'center')">
                       Bottom Center
                     </button>
                   </div>
                   <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('bottom', 'right')"
-                    >
+                    <button class=" btn btn-danger btn-block" (click)="showNotification('bottom', 'right')">
                       Bottom Right
                     </button>
                   </div>
@@ -222,48 +148,25 @@
           </div>
           <div class=" row">
             <div class=" col-md-12 text-center">
-              <div class=" card-header"><h4 class=" card-title">Modal</h4></div>
-              <button
-                class=" btn btn-primary mr-1"
-                data-target="#myModal"
-                (click)="myModal.show()"
-              >
+              <div class=" card-header">
+                <h4 class=" card-title">Modal</h4>
+              </div>
+              <button class=" btn btn-primary mr-1" data-target="#myModal" (click)="myModal.show()">
                 Classic modal
               </button>
-              <button
-                class=" btn btn-info mr-1"
-                data-target="#noticeModal"
-                (click)="noticeModal.show()"
-              >
+              <button class=" btn btn-info mr-1" data-target="#noticeModal" (click)="noticeModal.show()">
                 Notice modal
               </button>
-              <button
-                class=" btn"
-                data-target="#myModal10"
-                (click)="myModal10.show()"
-              >
+              <button class=" btn" data-target="#myModal10" (click)="myModal10.show()">
                 Small alert modal
               </button>
-              <div
-                aria-hidden="true"
-                aria-labelledby="myModalLabel"
-                bsModal
-                class=" modal fade"
-                #myModal="bs-modal"
-                id="myModal"
-                role="dialog"
-                tabindex="-1"
-              >
+              <div aria-hidden="true" aria-labelledby="myModalLabel" bsModal class=" modal fade" #myModal="bs-modal"
+                id="myModal" role="dialog" tabindex="-1">
                 <div class=" modal-dialog">
                   <div class=" modal-content">
                     <div class=" modal-header justify-content-center">
-                      <button
-                        aria-hidden="true"
-                        class=" close"
-                        data-dismiss="modal"
-                        type="button"
-                        (click)="myModal.hide()"
-                      >
+                      <button aria-hidden="true" class=" close" data-dismiss="modal" type="button"
+                        (click)="myModal.hide()">
                         <i class=" tim-icons icon-simple-remove"> </i>
                       </button>
                       <h6 class=" title title-up">Modal title</h6>
@@ -284,38 +187,20 @@
                       <button class=" btn btn-default" type="button">
                         Nice Button
                       </button>
-                      <button
-                        class=" btn btn-danger"
-                        data-dismiss="modal"
-                        (click)="myModal.hide()"
-                        type="button"
-                      >
+                      <button class=" btn btn-danger" data-dismiss="modal" (click)="myModal.hide()" type="button">
                         Close
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div
-                aria-hidden="true"
-                aria-labelledby="myModalLabel"
-                bsModal
-                class=" modal fade"
-                #noticeModal="bs-modal"
-                id="noticeModal"
-                role="dialog"
-                tabindex="-1"
-              >
+              <div aria-hidden="true" aria-labelledby="myModalLabel" bsModal class=" modal fade" #noticeModal="bs-modal"
+                id="noticeModal" role="dialog" tabindex="-1">
                 <div class=" modal-dialog modal-notice">
                   <div class=" modal-content">
                     <div class=" modal-header">
-                      <button
-                        aria-hidden="true"
-                        class=" close"
-                        data-dismiss="modal"
-                        (click)="noticeModal.hide()"
-                        type="button"
-                      >
+                      <button aria-hidden="true" class=" close" data-dismiss="modal" (click)="noticeModal.hide()"
+                        type="button">
                         <i class=" tim-icons icon-simple-remove"> </i>
                       </button>
                       <h5 class=" modal-title" id="myModalLabel">
@@ -336,11 +221,7 @@
                           </div>
                           <div class=" col-md-4">
                             <div class=" picture">
-                              <img
-                                alt="Thumbnail Image"
-                                class=" rounded img-raised"
-                                src="assets/img/bg1.jpg"
-                              />
+                              <img alt="Thumbnail Image" class=" rounded img-raised" src="assets/img/bg1.jpg" />
                             </div>
                           </div>
                         </div>
@@ -358,11 +239,7 @@
                           </div>
                           <div class=" col-md-4">
                             <div class=" picture">
-                              <img
-                                alt="Thumbnail Image"
-                                class=" rounded img-raised"
-                                src="assets/img/bg3.jpg"
-                              />
+                              <img alt="Thumbnail Image" class=" rounded img-raised" src="assets/img/bg3.jpg" />
                             </div>
                           </div>
                         </div>
@@ -373,38 +250,21 @@
                       </p>
                     </div>
                     <div class=" modal-footer justify-content-center">
-                      <button
-                        class=" btn btn-info btn-round"
-                        data-dismiss="modal"
-                        (click)="noticeModal.hide()"
-                        type="button"
-                      >
+                      <button class=" btn btn-info btn-round" data-dismiss="modal" (click)="noticeModal.hide()"
+                        type="button">
                         Sounds good!
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div
-                aria-hidden="true"
-                aria-labelledby="myModalLabel"
-                bsModal
-                class=" modal fade modal-mini modal-danger"
-                #myModal10="bs-modal"
-                id="myModal10"
-                role="dialog"
-                tabindex="-1"
-              >
+              <div aria-hidden="true" aria-labelledby="myModalLabel" bsModal class=" modal fade modal-mini modal-danger"
+                #myModal10="bs-modal" id="myModal10" role="dialog" tabindex="-1">
                 <div class=" modal-dialog">
                   <div class=" modal-content">
                     <div class=" modal-header justify-content-center">
-                      <button
-                        aria-hidden="true"
-                        class=" close"
-                        (click)="myModal10.hide()"
-                        data-dismiss="modal"
-                        type="button"
-                      >
+                      <button aria-hidden="true" class=" close" (click)="myModal10.hide()" data-dismiss="modal"
+                        type="button">
                         <i class=" tim-icons icon-simple-remove text-white">
                         </i>
                       </button>
@@ -419,12 +279,8 @@
                       <button class=" btn btn-link btn-neutral" type="button">
                         Back
                       </button>
-                      <button
-                        class=" btn btn-link btn-neutral"
-                        data-dismiss="modal"
-                        (click)="myModal10.hide()"
-                        type="button"
-                      >
+                      <button class=" btn btn-link btn-neutral" data-dismiss="modal" (click)="myModal10.hide()"
+                        type="button">
                         Close
                       </button>
                     </div>

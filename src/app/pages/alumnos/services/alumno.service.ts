@@ -25,12 +25,55 @@ export class AlumnoService{
             })
             ,catchError((err: HttpErrorResponse) => {
                 this.spinner.hide();
-                if(err.status ==0 ){
-                    Swal.fire('Error',environment.msg_servicio_no_disponible,'error')
-                }else{
-                    Swal.fire('Error ' + err.status + ' en el servicio', err.message + ' ' + err.error.message, 'error');
-                }
-                return Observable.throw(err);
+            if(err.status ==0 ){
+                Swal.fire('Error',environment.msg_servicio_no_disponible,'error')
+            }else{
+                Swal.fire('Error ' + err.status + ' '+ err.error.mensaje,  'Detalles: '+err.error.error, 'error');
+            }
+            return Observable.throw(err);
             })); 
+    }
+
+    public registrarAlumno(alumno){
+        this.spinner.show();
+        return this.http.post(environment.URL_SERVICIOSBACK + 'alumno/registrar',alumno).pipe(
+            map(resp => {
+                this.spinner.hide();
+                return resp;
+            })
+            ,catchError((err: HttpErrorResponse) => {
+                this.spinner.hide();
+            if(err.status ==0 ){
+                Swal.fire('Error',environment.msg_servicio_no_disponible,'error')
+            }else{
+                Swal.fire('Error ' + err.status + ' '+ err.error.mensaje,  'Detalles: '+err.error.error, 'error');
+            }
+            return Observable.throw(err);
+            })); 
+    }
+
+    public subirImagenAlumno(archivo: File, id){
+        this.spinner.show();
+        let formData = new FormData();
+        formData.append("archivo",archivo);
+        formData.append("id",id);
+        return this.http.post(environment.URL_SERVICIOSBACK+ "alumno/uploadImage",formData).pipe(
+            map(resp => {
+                this.spinner.hide();
+                return resp;
+            })
+            ,catchError((err: HttpErrorResponse) => {
+                this.spinner.hide();
+            if(err.status ==0 ){
+                Swal.fire('Error',environment.msg_servicio_no_disponible,'error')
+            }else{
+                Swal.fire('Error ' + err.status + ' '+ err.error.mensaje,  'Detalles: '+err.error.error, 'error');
+            }
+            return Observable.throw(err);
+            })); 
+    }
+
+    public  verFoto(nombre){
+       return environment.URL_SERVICIOSBACK+ "alumno/uploadImage/img/"+nombre ;
     }
 }

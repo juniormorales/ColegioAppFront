@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NgModule } from "@angular/core";
+import { NgModule, LOCALE_ID } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -12,6 +12,12 @@ import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { RtlLayoutComponent } from "./layouts/rtl-layout/rtl-layout.component";
+
+
+//ZONA HORARIA
+import { registerLocaleData } from '@angular/common';
+import localesPE from '@angular/common/locales/es-PE'
+registerLocaleData(localesPE,'es-Pe');
 
 @NgModule({
   declarations: [
@@ -30,7 +36,9 @@ import { RtlLayoutComponent } from "./layouts/rtl-layout/rtl-layout.component";
     ToastrModule.forRoot(),
     ComponentsModule,
   ],
-  providers: [],
+  providers: [
+    { provide:LOCALE_ID,useValue:'es-Pe' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
