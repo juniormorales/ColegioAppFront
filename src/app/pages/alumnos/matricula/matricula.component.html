@@ -4,7 +4,7 @@
     </ngx-spinner>
     <div class=" col-md-10 mr-auto ml-auto">
         <div class="wizard-container">
-            <div class="col-md-8 ml-auto mr-auto pt-5">
+            <div class="col-md-8 ml-auto mr-auto pt-3 ">
                 <h2 class=" text-center">Matricula virtual</h2>
             </div>
             <div class="row mt-5">
@@ -24,7 +24,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-7 ">
-                                    <button class="btn btn-primary btn-sm btn-block" (click)="buscarDatosAlumno()">Buscar</button>
+                                    <button class="btn btn-primary btn-sm btn-block"
+                                        (click)="buscarDatosAlumno()">Buscar</button>
                                 </div>
                             </div>
                             <div class="col-md-4 input-group">
@@ -39,28 +40,58 @@
                                 <label class="pl-3 w-100"> Nombres </label>
                                 <div class=" col">
                                     <div class=" form-group">
-                                        <input class=" form-control" disabled type="text"  [(ngModel)]="nombre"/>
+                                        <input class=" form-control" disabled type="text" [(ngModel)]="nombre" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-        
+
                     </div>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="card-title text-center p-2">
-                            <h4>Proceso Matricula</h4>
+                    <div *ngIf="matricular; else noEncontro">
+                        <div class="card-header">
+                            <div class="card-title text-center p-2">
+                                <h4>Proceso Matricula</h4>
+                            </div>
                         </div>
-                        <div class="row">
-        
+                        <div class="card-body">
+                            <div class="form" [formGroup]="matriculaForm" (ngSubmit)="onRegister()">
+                                <div class="row justify-content-center">
+                                    <div class=" col-lg-3">
+                                        <label>Nivel</label>
+                                        <div class="form-group pb-3" [ngClass]="{'form-group-focus': focus1 === true,
+                                        'has-danger': ((focus1Touched || wizard) && registerF.departamento.errors) ||
+                                          (registerF.departamento.lenght > 0 && registerF.departamento.errors),
+                                        'has-success': !registerF.departamento.errors }">
+                                            <angular2-multiselect name="departamento" (focus)="focus1 = true; focus1Touched = true"
+                                                (blur)="focus1 = false" [data]="dataDep" formControlName="departamento"
+                                                [settings]="settingsGeneral" (onSelect)="onDepartamentoSelect($event)" >
+                                            </angular2-multiselect>
+                                            <label class="error" *ngIf=" ((focus1Touched || wizard) && registerF.departamento.errors) ||
+                                                    (registerF.departamento.lenght>0 && registerF.departamento.errors)">Este campo es
+                                                requerido.</label>
+                                        </div>
+                                    </div>
+                                  
+                                
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-body">
-        
-                    </div>
+                    <ng-template #noEncontro>
+                       <div class="col">
+                        <div class="card-body">
+                            <alert [type]="'info'">
+                                <span>
+                                    <b> Tip.- </b> Debe escribir el DNI del alumno registrado que desea matricular, este
+                                    no debe poseer ya un registro de matricula</span>
+                            </alert>
+                        </div>
+                       </div>
+                    </ng-template>
                 </div>
             </div>
         </div>

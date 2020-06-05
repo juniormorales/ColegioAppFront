@@ -1,7 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AmbienteRoutes } from './ambientes.routes';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -10,7 +9,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 //Componentes
 import { TipoAmbientesComponent } from './tipo-ambientes/tipo-ambientes.component';
 import { AmbientesComponent } from './gestion-ambientes/ambientes.component';
-import { PaginaAmbienteComponent } from './pagina-ambiente/pagina-ambiente.component';
+import { PaginaAmbienteComponent } from './pagina-ambiente.component';
 
 //Ngx
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -35,8 +34,6 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
   imports: [
     CommonModule,
     HttpClientModule,
-    NgbModule,
-    NgbModalModule,
     RouterModule.forChild(AmbienteRoutes),
     FormsModule,
     ReactiveFormsModule,

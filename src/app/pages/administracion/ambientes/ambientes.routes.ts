@@ -1,13 +1,12 @@
 import { Routes } from '@angular/router';
 import { AmbientesComponent } from './gestion-ambientes/ambientes.component';
 import { TipoAmbientesComponent } from './tipo-ambientes/tipo-ambientes.component';
-import { PaginaAmbienteComponent } from './pagina-ambiente/pagina-ambiente.component';
+import { PaginaAmbienteComponent } from './pagina-ambiente.component';
 
 export const AmbienteRoutes: Routes = [
     {
-        path: "ambientes",
+        path: "",
         component: PaginaAmbienteComponent,
-        data: {animation: 'isLeft'},
         children: [
             {
                 path: "tipoambiente",

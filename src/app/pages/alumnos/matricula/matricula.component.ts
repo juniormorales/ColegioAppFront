@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlumnoService } from '../services/alumno.service';
 import Swal from 'sweetalert2';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-matricula',
@@ -14,13 +15,41 @@ export class MatriculaComponent implements OnInit {
   dni: number;
   apellido: string;
   nombre: string;
+  matricular: boolean = false;
+  matriculaForm: FormGroup;
+
+    //Validacion
+    focus;
+    focus1;
+    focus2;
+    focus3;
+    focusTouched;
+    focus1Touched;
+    focus2Touched;
+    focus3Touched;
 
   constructor(
-    public _alumnoService: AlumnoService
+    public _alumnoService: AlumnoService,
+    public builder: FormBuilder
   ) { }
 
   ngOnInit() {
     this.listarAlumnos();
+  }
+
+  //Formulario
+  private crearFormulario(){
+    this.matriculaForm = this.builder.group({
+
+    });
+  }
+
+  public onRegister(){
+
+  }
+
+  get registerF(){
+    return this.matriculaForm.controls;
   }
 
   //Web Services
@@ -41,6 +70,7 @@ export class MatriculaComponent implements OnInit {
         }else{
           this.apellido = alumno.persona.apellidos;
           this.nombre = alumno.persona.nombres;
+          this.matricular = true;
         }
       }
     });

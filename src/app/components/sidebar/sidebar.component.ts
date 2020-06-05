@@ -287,6 +287,14 @@ export const ROUTES: RouteInfo[] = [
        title: "Ambientes",
        type: "link",
        smallTitle: "AU"
+     },
+     {
+      path: "clases",
+      rtlTitle: "",
+      rtlSmallTitle: "",
+      title: "Grupos y Clases",
+      type: "link",
+      smallTitle: "CLA"
      }
     ]
   },

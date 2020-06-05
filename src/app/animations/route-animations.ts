@@ -40,13 +40,15 @@ function slideTo(direction) {
     query(':enter', [
       style({ [direction]: '-100%'})
     ]),
+    query(':enter', []),
     group([
       query(':leave', [
         animate('600ms ease', style({ [direction]: '100%'}))
       ], optional),
       query(':enter', [
         animate('600ms ease', style({ [direction]: '0%'}))
-      ])
+      ]),
+      query(':enter', [])
     ]),
   ];
 }
@@ -95,6 +97,7 @@ export const stepper =
           width: '100%',
         }),
       ]),
+      query(':enter', []),
       group([
         query(':enter', [
           animate('2000ms ease', keyframes([
@@ -109,7 +112,8 @@ export const stepper =
             style({ transform: 'scale(0.5) translateX(-25%) rotate(0)', offset: 0.35 }),
             style({ opacity: 0, transform: 'translateX(-50%) rotate(-180deg) scale(6)', offset: 1 }),
           ])),
-        ])
+        ]),
+        query(':enter', [])
       ]),
     ])
 

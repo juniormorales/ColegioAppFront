@@ -13,8 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-
-
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 //Swimlane
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -45,7 +44,6 @@ import { HistorialAcademicoComponent } from './gestionalumnos/modals/mostrar-det
       CommonModule,
       RouterModule.forChild(AlumnosRoutes),
       HttpClientModule,
-      NgSelectModule,
       NgxDatatableModule,
       FormsModule,
       ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: "never" }),
@@ -57,6 +55,7 @@ import { HistorialAcademicoComponent } from './gestionalumnos/modals/mostrar-det
       ComponentsModule,
       NgbModule,
       NgbModalModule,
+      AlertModule.forRoot(),
 
     ],
     declarations: [
