@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +20,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NuevoAmbienteComponent } from './modals/nuevo-ambiente/nuevo-ambiente.component';
 import { NuevoTipoAmbienteComponent } from './modals/nuevo-tipo-ambiente/nuevo-tipo-ambiente.component';
 
+//Componentes Extras
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 
 @NgModule({
@@ -39,11 +41,16 @@ import { NuevoTipoAmbienteComponent } from './modals/nuevo-tipo-ambiente/nuevo-t
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AngularMultiSelectModule
+
   ],
   entryComponents: [
     NuevoAmbienteComponent,
     NuevoTipoAmbienteComponent,
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   bootstrap: [ PaginaAmbienteComponent]
   

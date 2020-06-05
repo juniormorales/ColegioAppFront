@@ -73,4 +73,23 @@ export class TipoAmbienteService {
       })
     );
   }
+
+  public eliminar(id){
+    this.spinner.show();
+    return this.http.delete( environment.URL_SERVICIOSBACK + 'tipoAmbiente/eliminar/'+id).pipe(
+      map(response => {
+        this.spinner.hide();
+        return response;
+      }),
+      catchError( (err: HttpErrorResponse) => {
+        this.spinner.hide();
+            if(err.status ==0 ){
+                Swal.fire('Error',environment.msg_servicio_no_disponible,'error')
+            }else{
+                Swal.fire('Error ' + err.status + ' '+ err.error.mensaje,  'Detalles: '+err.error.error, 'error');
+            }
+            return Observable.throw(err);
+      })
+    );
+  }
 }

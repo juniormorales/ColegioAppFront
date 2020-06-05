@@ -17,6 +17,7 @@ import { RtlLayoutComponent } from "./layouts/rtl-layout/rtl-layout.component";
 //ZONA HORARIA
 import { registerLocaleData } from '@angular/common';
 import localesPE from '@angular/common/locales/es-PE'
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 registerLocaleData(localesPE,'es-Pe');
 
 @NgModule({
@@ -35,6 +36,7 @@ registerLocaleData(localesPE,'es-Pe');
     AppRoutingModule,
     ToastrModule.forRoot(),
     ComponentsModule,
+    AngularMultiSelectModule
   ],
   providers: [
     { provide:LOCALE_ID,useValue:'es-Pe' }

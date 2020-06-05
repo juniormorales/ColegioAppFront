@@ -1,40 +1,77 @@
-<div class="modal-header">
-    <button aria-hidden="true" class=" close btn-outline-danger btn-lg" (click)="cerrarModal()" type="button">
-        <i class=" tim-icons icon-simple-remove"></i>
-    </button>
-    <h6 class="modal-title">{{input_ambiente!=null?'Actualizar Ambiente':'Nuevo Ambiente'}} </h6>
-</div>
-<div class="modal-body">
-    <form [formGroup]="ambienteForm" (ngSubmit)="registrarAmbiente()">
-        <div class=" row ml-3 mr-3">
-            <div class="col-12 col-md-6">
-                <label>Numero del salon</label>
-                <div class=" input-group pb-3" [ngClass]="{'input-group-focus': focus === true, 'has-danger': (focusTouched  &&
-                    registerF.numero.errors) ||(registerF.numero.value != null && registerF.numero.errors), 
-                    'has-success': !registerF.numero.errors}">
-                    <input class=" form-control" name="numero" autocomplete="off" type="number" formControlName="numero"
-                        (focus)="focus = true; focusTouched = true" (blur)="focus = false" />
-                    <label class="error" *ngIf="((focusTouched) && registerF.numero.errors) ||
-                  (registerF.numero.value !=  null && registerF.numero.errors)">Este campo es requerido.</label>
+<div class="card mb-0">
+    <div class="card-header">
+        <button aria-hidden="true" class=" close btn-outline-danger btn-lg btn-danger" (click)="cerrarModal()" type="button">
+            <i class=" tim-icons icon-simple-remove"></i>
+        </button>
+        <h6 class="card-title">{{input_ambiente!=null?'Actualizar Ambiente':'Nuevo Ambiente'}} </h6>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="ambienteForm" (ngSubmit)="registrarAmbiente()">
+            <div class=" row ml-3 mr-3">
+                <div class="col-12 col-md-6">
+                    <label>Numero del salon</label>
+                    <div class=" input-group pb-3" [ngClass]="{'input-group-focus': focus === true, 'has-danger': (focusTouched  &&
+                        registerF.numero.errors) ||(registerF.numero.value != null && registerF.numero.errors), 
+                        'has-success': !registerF.numero.errors}">
+                        <input class=" form-control" name="numero" autocomplete="off" type="number" formControlName="numero"
+                            (focus)="focus = true; focusTouched = true" (blur)="focus = false" />
+                        <label class="error w-100" *ngIf="((focusTouched) && registerF.numero.errors) ||
+                      (registerF.numero.value !=  null && registerF.numero.errors)">Este campo es requerido.</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label>Capacidad de alumnos</label>
+                    <div class=" input-group pb-3" [ngClass]="{'input-group-focus': focus1 === true, 'has-danger': (focus1Touched  &&
+                        registerF.capacidad.errors) ||(registerF.capacidad.value != null && registerF.capacidad.errors), 
+                        'has-success': !registerF.capacidad.errors}">
+                        <input class=" form-control" name="capacidad" autocomplete="off" type="number"
+                            formControlName="capacidad" (focus)="focus1 = true; focus1Touched = true"
+                            (blur)="focus1 = false" />
+                        <label class="error w-100" *ngIf="((focus1Touched && registerF.capacidad.errors) ||
+                      (registerF.capacidad.value !=  null && registerF.capacidad.errors))">Este campo es requerido.</label>
+                    </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
-                <label>Capacidad de alumnos</label>
-                <div class=" input-group pb-3" [ngClass]="{'input-group-focus': focus1 === true, 'has-danger': (focus1Touched  &&
-                    registerF.capacidad.errors) ||(registerF.capacidad.value != null && registerF.capacidad.errors), 
-                    'has-success': !registerF.capacidad.errors}">
-                    <input class=" form-control" name="capacidad" autocomplete="off" type="number"
-                        formControlName="capacidad" (focus)="focus1 = true; focus1Touched = true"
-                        (blur)="focus1 = false" />
-                    <label class="error" *ngIf="((focus1Touched && registerF.capacidad.errors) ||
-                  (registerF.capacidad.value !=  null && registerF.capacidad.errors))">Este campo es requerido.</label>
+            <div class="row col-12 ml-3 mr-3">
+                <label class=" col-12 col-form-label">
+                    Condición del salon
+                </label>
+                    <div class=" form-check form-check-radio col-lg-6">
+                        <label class="form-check-label">
+                            <input checked="checked" class="form-check-input" formControlName="estado" name="estado"
+                                id="radio_false" type="radio" [value]="false" />
+                            <span class="form-check-sign"> </span>No Disponible
+                        </label>
+                    </div>
+                    <div class=" form-check form-check-radio col-lg-6">
+                        <label class=" form-check-label">
+                            <input class="form-check-input" formControlName="estado" name="estado" id="radio_true"
+                                type="radio" [value]="true" />
+                            <span class="form-check-sign"> </span> Disponible
+                        </label>
+                    </div>
+            </div>
+            <div class="row m-3" >
+                <label class=" col-12 col-form-label">
+                    Tipo de Ambiente
+                </label>
+                <div class="form-group col-12" [ngClass]="{'form-group-focus': focus2 === true,
+                'has-danger': (focus2Touched || registerF.tipo.lenght == 0 ),
+                'has-success': registerF.tipo.lenght > 0}">
+                    <angular2-multiselect name="tipo" (focus)="focus2 = true; focus2Touched = true"
+                        (blur)="focus2 = false" [data]="dataTipo" formControlName="tipo"
+                        [settings]="settingsGeneral" >
+                    </angular2-multiselect>
+                    <label class="error w-100" *ngIf=" focus2Touched  || registerF.tipo.lenght==0">Este campo es
+                        requerido.</label>
                 </div>
             </div>
+        </form>
+    </div>
+    <div class="card-footer mt-0">
+        <div class="row p-3">
+            <button type="button"
+                class="btn btn-primary  btn-lg btn-block" (click)="crud()">{{input_ambiente!=null?'Actualizar':'Registrar'}}</button>
         </div>
-    </form>
-</div>
-<div class="modal-footer d-flex flex-row-reverse">
-    <div class="row pr-3">
-        <button type="button" class="btn btn-primary  btn-lg btn-block">{{input_ambiente!=null?'Actualizar':'Registrar'}}</button>
     </div>
 </div>

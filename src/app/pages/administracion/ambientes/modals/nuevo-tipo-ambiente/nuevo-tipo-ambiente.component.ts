@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TipoAmbienteService } from '../../../services/tipo-ambiente.service';
 import Swal from 'sweetalert2';
 import { TipoAmbiente } from 'src/app/models/tipoAmbiente';
@@ -25,7 +25,8 @@ export class NuevoTipoAmbienteComponent implements OnInit {
   constructor(
     public builder: FormBuilder,
     public bsModalRef: BsModalRef,
-    public tipoAmbienteService: TipoAmbienteService
+    public tipoAmbienteService: TipoAmbienteService,
+    public modalService: BsModalService
   ) { }
 
   ngOnInit() {
@@ -63,9 +64,8 @@ export class NuevoTipoAmbienteComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, registrar!'
+      confirmButtonText: 'Sí, continuar!'
     }).then((result) => {
-      this.armarObjeto();
       if (result.value) {
         if(this.tipoAmbiente.accion == 'A'){
           this.actualizarTipoAmbiente();
@@ -73,30 +73,39 @@ export class NuevoTipoAmbienteComponent implements OnInit {
           this.registrarTipoAmbiente();
         }
       }
-    })
+    });
   }
 
   registrarTipoAmbiente(){
     this.tipoAmbienteService.registrar(this.tipoAmbiente).subscribe((resp :any)=>{
       Swal.fire("¡HECHO!",resp.mensaje,'success');
-      this.cerrarModal();
+      this.bsModalRef.hide();
     });
   }
 
   actualizarTipoAmbiente(){
-
+    this.tipoAmbienteService.actualizar(this.tipoAmbiente).subscribe((resp:any)=>{
+      Swal.fire("¡HECHO!",resp.mensaje,'success');
+      this.bsModalRef.hide();
+    });
   }
 
   //funciones del modal
   public cerrarModal(){
+    this.modalService.setDismissReason('CERRAR')
     this.bsModalRef.hide();
   }
 
   crud(){
-    if(this.tipoAmbiente.accion!=null){
-      this.alertaConfirmar('Actualizar');
+    if(this.tipoAmbienteForm.valid){
+      this.armarObjeto();
+      if(this.tipoAmbiente.accion!=null){
+        this.alertaConfirmar('Actualizar');
+      }else{
+        this.alertaConfirmar('Registrar');
+      }
     }else{
-      this.alertaConfirmar('Registrar');
+      Swal.fire('¡ADVERTENCIA!','Complete los campos obligatorios para continuar','warning');
     }
   }
 

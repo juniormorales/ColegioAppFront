@@ -34,11 +34,11 @@
                                 <tr>
                                     <td class="text-center">{{tipoambiente.descripcion}}</td>
                                     <td class="text-center">
-                                        <button class=" btn btn-success btn-link btn-md btn-icon" tooltip="Refresh" type="button">
+                                        <button class=" btn btn-success btn-link btn-md btn-icon"  (click)="actualizarTipoAmb(tipoambiente)" tooltip="Refresh" type="button">
                                             <i class=" tim-icons icon-refresh-01"> </i>
                                         </button></td>
                                     <td class="text-center">
-                                        <button class=" btn btn-danger btn-link btn-md" tooltip="Delete" type="button">
+                                        <button class=" btn btn-danger btn-link btn-md" (click)="eliminarTipoAmb(tipoambiente)" tooltip="Delete" type="button">
                                             <i class=" tim-icons icon-simple-remove"> </i>
                                         </button>
                                     </td>

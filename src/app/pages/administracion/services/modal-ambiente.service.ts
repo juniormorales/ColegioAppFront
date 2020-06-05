@@ -27,7 +27,11 @@ export class ModalAmbienteService {
     this.modalRef = this.bsModalService.show(NuevoAmbienteComponent, config);
     return new Observable<any>(observer => {
       const subscripcion = this.bsModalService.onHidden.subscribe((reason: any) => {
-        observer.complete();
+        if(reason === "CERRAR"){
+          observer.error();
+        }else{
+          observer.complete();
+        }
       });
 
       return {
@@ -53,7 +57,11 @@ export class ModalAmbienteService {
     this.modalRef = this.bsModalService.show(NuevoTipoAmbienteComponent,  config );
     return new Observable<any>(observer => {
       const subscripcion = this.bsModalService.onHidden.subscribe((reason: any) => {
-        observer.complete();
+        if(reason === "CERRAR"){
+          observer.error();
+        }else{
+          observer.complete();
+        }
       });
 
       return {

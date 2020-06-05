@@ -124,7 +124,7 @@ export class NavegacionRegistrosComponent implements OnInit {
   onRegister() {
     this.wizard = true;
     if (this.alumnoForm.invalid) {
-      Swal.fire("¡Advertencia!","Aun quedan campos obligatorios por completar",'warning');
+      Swal.fire('¡ADVERTENCIA!','Complete los campos obligatorios para continuar','warning');
       return;
     }else{
       this.construirObjetoAlumno();

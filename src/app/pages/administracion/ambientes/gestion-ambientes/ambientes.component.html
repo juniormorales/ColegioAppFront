@@ -2,8 +2,9 @@
     <div class=" row mt-5 ml-auto mr-auto">
         <ol class=" breadcrumb bg-transparent ml-3">
             <li class=" breadcrumb-item active">Ambientes</li>
-            <li class=" breadcrumb-item"><a routerLink="/administracion/ambientes/tipoambiente" > Tipos de Ambiente </a></li>
-          </ol>
+            <li class=" breadcrumb-item"><a routerLink="/administracion/ambientes/tipoambiente"> Tipos de Ambiente </a>
+            </li>
+        </ol>
         <div class="card">
             <div class=" card-body">
                 <div class="col">
@@ -38,11 +39,13 @@
                                     <td class="text-center">{{ambiente.capacidad}}</td>
                                     <td class="text-center">{{!ambiente.estado?'No Disponible':'Disponible'}}</td>
                                     <td class="text-center">
-                                        <button class=" btn btn-success btn-link btn-md btn-icon" tooltip="Refresh" type="button">
+                                        <button class=" btn btn-success btn-link btn-md btn-icon"
+                                            (click)="actualizarAmbiente(ambiente)" tooltip="Refresh" type="button">
                                             <i class=" tim-icons icon-refresh-01"> </i>
                                         </button></td>
                                     <td class="text-center">
-                                        <button class=" btn btn-danger btn-link btn-md" tooltip="Delete" type="button">
+                                        <button class=" btn btn-danger btn-link btn-md" 
+                                        (click)="eliminarAmbiente(ambiente)" tooltip="Delete" type="button">
                                             <i class=" tim-icons icon-simple-remove"> </i>
                                         </button>
                                     </td>
