@@ -15,8 +15,8 @@ export class NuevoAmbienteComponent implements OnInit {
 
   //Variables iniciales
   input_ambiente
-  ambiente : Ambiente;
-  lsTipoAmbiente: any [] = [];
+  ambiente: Ambiente;
+  lsTipoAmbiente: any[] = [];
 
   //Variables del formulario
   ambienteForm: FormGroup;
@@ -27,20 +27,20 @@ export class NuevoAmbienteComponent implements OnInit {
   focusTouched;
   focus1Touched;
   focus2Touched;
-  
-    //Data para el angular2-dropdown
-    dataTipo: any [] = [];
 
-    settingsGeneral= {
-      singleSelection: true,
-      text: 'Seleccionar ...',
-      enableSearchFilter: false,
-      classes: 'selectpicker btn-danger',
-      lazyLoading: true,
-      maxHeight: 150,
-      autoPosition: false,
-      position: 'bottom'
-    }
+  //Data para el angular2-dropdown
+  dataTipo: any[] = [];
+
+  settingsGeneral = {
+    singleSelection: true,
+    text: 'Seleccionar ...',
+    enableSearchFilter: false,
+    classes: 'selectpicker btn-danger',
+    lazyLoading: true,
+    maxHeight: 150,
+    autoPosition: false,
+    position: 'bottom'
+  }
 
   constructor(
     public builder: FormBuilder,
@@ -52,38 +52,42 @@ export class NuevoAmbienteComponent implements OnInit {
 
   ngOnInit() {
     this.armarForm();
-    if(this.input_ambiente !=null ){
+    if (this.input_ambiente != null) {
       this.ambiente = this.input_ambiente;
-      this.ambienteForm.setValue({
-        numero : this.ambiente.numero,
-        capacidad: this.ambiente.capacidad,
-        estado : this.ambiente.estado,
-        tipo: [{ 
-          id: this.ambiente.tipoAmbiente.idTipoAmbiente,
-          itemName: this.ambiente.tipoAmbiente.descripcion
-          }]
-      });
-    }else{
+      this.setearFormActualizar();
+    } else {
       this.ambiente = new Ambiente();
     }
     this.listarTiposAmbiente();
   }
 
   //Formulario
-  armarForm(){
+  private armarForm() {
     this.ambienteForm = this.builder.group({
-      numero: [null,[Validators.required]],
-      capacidad: [null,[Validators.required]],
+      numero: [null, [Validators.required]],
+      capacidad: [null, [Validators.required]],
       estado: [false],
-      tipo: [[],[Validators.required]]
+      tipo: [[], [Validators.required]]
     });
   }
 
-  get registerF(){
+  private setearFormActualizar() {
+    this.ambienteForm.setValue({
+      numero: this.ambiente.numero,
+      capacidad: this.ambiente.capacidad,
+      estado: this.ambiente.estado,
+      tipo: [{
+        id: this.ambiente.tipoAmbiente.idTipoAmbiente,
+        itemName: this.ambiente.tipoAmbiente.descripcion
+      }]
+    });
+  }
+
+  get registerF() {
     return this.ambienteForm.controls;
   }
 
-  private armarObjeto(){
+  private armarObjeto() {
     this.ambiente.numero = this.ambienteForm.get('numero').value;
     this.ambiente.estado = this.ambienteForm.get('estado').value;
     this.ambiente.capacidad = this.ambienteForm.get('capacidad').value;
@@ -91,19 +95,19 @@ export class NuevoAmbienteComponent implements OnInit {
   }
 
   //Web Services
-  listarTiposAmbiente(){
-    this._tipoAmbienteService.listar().subscribe( (resp:any)=>{
+  listarTiposAmbiente() {
+    this._tipoAmbienteService.listar().subscribe((resp: any) => {
       this.lsTipoAmbiente = resp.aaData;
       this.lsTipoAmbiente.forEach(element => {
-        this.dataTipo.push({"id":element.idTipoAmbiente, "itemName":element.descripcion});
+        this.dataTipo.push({ "id": element.idTipoAmbiente, "itemName": element.descripcion });
       });
     });
   }
 
-  alertaConfirmar(mensaje){
+  alertaConfirmar(mensaje) {
     Swal.fire({
       title: 'Confirmar Registro',
-      text: "¿"+ mensaje +" este ambiente en la base de datos?",
+      text: "¿" + mensaje + " este ambiente en la base de datos?",
       type: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -111,46 +115,46 @@ export class NuevoAmbienteComponent implements OnInit {
       confirmButtonText: 'Sí, continuar!'
     }).then((result) => {
       if (result.value) {
-        if(this.ambiente.accion == 'A'){
+        if (this.ambiente.accion == 'A') {
           this.actualizarAmbiente();
-        }else{
+        } else {
           this.registrarAmbiente();
         }
       }
     });
   }
 
-  public registrarAmbiente(){
-    this._ambienteService.registrar(this.ambiente).subscribe((resp :any)=>{
-      Swal.fire("¡HECHO!",resp.mensaje,'success');
+  public registrarAmbiente() {
+    this._ambienteService.registrar(this.ambiente).subscribe((resp: any) => {
+      Swal.fire("¡HECHO!", resp.mensaje, 'success');
       this.bsModalRef.hide();
     });
   }
 
-  public actualizarAmbiente(){
-    this._ambienteService.actualizar(this.ambiente).subscribe((resp:any)=>{
-      Swal.fire("¡HECHO!",resp.mensaje,'success');
+  public actualizarAmbiente() {
+    this._ambienteService.actualizar(this.ambiente).subscribe((resp: any) => {
+      Swal.fire("¡HECHO!", resp.mensaje, 'success');
       this.bsModalRef.hide();
     });
   }
 
   //funciones del modal
-  public cerrarModal(){
+  public cerrarModal() {
     this.modalService.setDismissReason('CERRAR');
     this.bsModalRef.hide();
   }
 
   //Eventos del boton
-  crud(){
-    if(this.ambienteForm.valid){
+  crud() {
+    if (this.ambienteForm.valid) {
       this.armarObjeto();
-      if(this.ambiente.accion!=null){
+      if (this.ambiente.accion != null) {
         this.alertaConfirmar('Actualizar');
-      }else{
+      } else {
         this.alertaConfirmar('Registrar');
       }
-    }else{
-      Swal.fire('¡ADVERTENCIA!','Complete los campos obligatorios para continuar','warning');
+    } else {
+      Swal.fire('¡ADVERTENCIA!', 'Complete los campos obligatorios para continuar', 'warning');
     }
   }
 

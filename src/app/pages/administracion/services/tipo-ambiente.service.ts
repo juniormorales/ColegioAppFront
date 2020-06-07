@@ -86,7 +86,7 @@ export class TipoAmbienteService {
             if(err.status ==0 ){
                 Swal.fire('Error',environment.msg_servicio_no_disponible,'error')
             }else{
-                Swal.fire('Error ' + err.status + ' '+ err.error.mensaje,  'Detalles: '+err.error.error, 'error');
+                Swal.fire(err.error.mensaje,  'Detalles: '+err.error.error, 'error');
             }
             return Observable.throw(err);
       })

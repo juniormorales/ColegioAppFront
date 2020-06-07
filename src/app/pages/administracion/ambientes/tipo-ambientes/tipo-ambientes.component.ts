@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NuevoTipoAmbienteComponent } from '../modals/nuevo-tipo-ambiente/nuevo-tipo-ambiente.component';
 import { TipoAmbienteService } from '../../services/tipo-ambiente.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ModalAmbienteService } from '../../services/modal-ambiente.service';
+import { ModalService } from '../../services/modal.service';
 import { ModalOptions } from 'ngx-bootstrap/modal/public_api';
 import Swal from 'sweetalert2';
 
@@ -18,7 +18,7 @@ export class TipoAmbientesComponent implements OnInit {
 
   constructor(
     public _tipoAmbienteService: TipoAmbienteService,
-    public modalService: ModalAmbienteService
+    public modalService: ModalService
   ) { }
 
   ngOnInit() {

@@ -4,7 +4,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NuevoAmbienteComponent } from '../modals/nuevo-ambiente/nuevo-ambiente.component';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal/public_api';
-import { ModalAmbienteService } from '../../services/modal-ambiente.service';
+import { ModalService } from '../../services/modal.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,7 +21,7 @@ export class AmbientesComponent implements OnInit {
 
   constructor(
     public _ambienteService: AmbientesService,
-    public modalService: ModalAmbienteService,
+    public modalService: ModalService,
   ) { }
 
   ngOnInit() {

@@ -12,11 +12,15 @@ import { GestionClasesComponent } from './gestion-clases/gestion-clases.componen
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ClasesRoutes } from './clases.routes';
+import { NuevaClaseComponent } from './modals/nueva-clase/nueva-clase.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { GrupoComponent } from './grupo/grupo.component';
 
 @NgModule({
   declarations: [
     ClasesComponent, 
-    GestionClasesComponent
+    GestionClasesComponent, NuevaClaseComponent, GrupoComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +30,8 @@ import { ClasesRoutes } from './clases.routes';
     NgxSpinnerModule,
     FormsModule,
     ReactiveFormsModule,
+    ModalModule.forRoot(),
+    AngularMultiSelectModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

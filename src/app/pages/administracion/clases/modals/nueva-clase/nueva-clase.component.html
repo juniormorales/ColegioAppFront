@@ -1,0 +1,93 @@
+<div class="card mb-0">
+    <div class="card-header">
+        <button aria-hidden="true" class=" close btn-outline-danger btn-lg btn-danger" (click)="cerrarModal()"
+            type="button">
+            <i class=" tim-icons icon-simple-remove"></i>
+        </button>
+        <h6 class="card-title">{{input_clase!=null?'Actualizar Clase':'Nueva Clase'}} </h6>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="claseForm" (ngSubmit)="registrarClase()">
+            <div class=" row m-2">
+
+                <label class=" col-12 col-form-label">
+                    Salon de Clase
+                </label>
+                <div class="form-group col-12" [ngClass]="{'form-group-focus': focus === true,
+                    'has-danger': (focusTouched || registerF.ambiente.lenght == 0 ),
+                    'has-success': registerF.ambiente.lenght > 0}">
+                    <angular2-multiselect name="ambiente" (focus)="focus = true; focusTouched = true"
+                        (blur)="focus = false" [data]="dataAmbiente" formControlName="ambiente"
+                        [settings]="settingsGeneral">
+                    </angular2-multiselect>
+                    <label class="error w-100" *ngIf=" focusTouched  || registerF.ambiente.lenght==0">Este campo es
+                        requerido.</label>
+                </div>
+            </div>
+            <div class=" row m-2">
+                <label class=" col-12 col-form-label">
+                    Nivel
+                </label>
+                <div class="form-group col-12" [ngClass]="{'form-group-focus': focus1 === true,
+                    'has-danger': (focus1Touched || registerF.nivel.lenght == 0 ),
+                    'has-success': registerF.nivel.lenght > 0}">
+                    <angular2-multiselect name="nivel" (focus)="focus1 = true; focus1Touched = true"
+                        (blur)="focus1 = false" [data]="dataNivel" formControlName="nivel" [settings]="settingsGeneral"
+                        (onSelect)="onNivelSelect($event)">
+                    </angular2-multiselect>
+                    <label class="error w-100" *ngIf=" focus1Touched  || registerF.nivel.lenght==0">Este campo es
+                        requerido.</label>
+                </div>
+
+            </div>
+            <div class="row m-2">
+                <label class=" col-12 col-form-label">
+                    Grado
+                </label>
+                <div class="form-group col-12" [ngClass]="{'form-group-focus': focus2 === true,
+                'has-danger': (focus2Touched || registerF.grado.lenght == 0 ),
+                'has-success': registerF.grado.lenght > 0}">
+                    <angular2-multiselect name="grado" (focus)="focus2 = true; focus2Touched = true"
+                        (blur)="focus2 = false" [data]="dataGrado" formControlName="grado" [settings]="settingsGeneral">
+                    </angular2-multiselect>
+                    <label class="error w-100" *ngIf=" focus2Touched  || registerF.grado.lenght==0">Este campo es
+                        requerido.</label>
+                </div>
+            </div>
+            <div class="row m-2">
+                <label class=" col-12 col-form-label">
+                    Seccion
+                </label>
+                <div class="form-group col-12" [ngClass]="{'form-group-focus': focus3 === true,
+                'has-danger': (focus3Touched || registerF.seccion.lenght == 0 ),
+                'has-success': registerF.seccion.lenght > 0}">
+                    <angular2-multiselect name="seccion" (focus)="focus3 = true; focus3Touched = true"
+                        (blur)="focus3 = false" [data]="dataSeccion" formControlName="seccion" [settings]="settingsGeneral">
+                    </angular2-multiselect>
+                    <label class="error w-100" *ngIf=" focus3Touched  || registerF.seccion.lenght==0">Este campo es
+                        requerido.</label>
+                </div>
+            </div>
+            <div class="row m-2">
+                <label class=" col-12 col-form-label">
+                    Turnos
+                </label>
+                <div class="form-group col-12" [ngClass]="{'form-group-focus': focus4 === true,
+                'has-danger': (focus4Touched || registerF.turno.lenght == 0 ),
+                'has-success': registerF.turno.lenght > 0}">
+                    <angular2-multiselect name="turno" (focus)="focus4 = true; focus4Touched = true"
+                        (blur)="focus4 = false" [data]="dataTurno" formControlName="turno" [settings]="settingsGeneral">
+                    </angular2-multiselect>
+                    <label class="error w-100" *ngIf=" focus4Touched  || registerF.turno.lenght==0">Este campo es
+                        requerido.</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer mt-0">
+        <div class="row p-3">
+            <button type="button" class="btn btn-primary  btn-lg btn-block"
+                (click)="crud()">{{input_clase!=null?'Actualizar':'Registrar'}}</button>
+        </div>
+    </div>
+</div>

@@ -1,24 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
 import { ClaseService } from '../../services/clase.service';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-gestion-clases',
   templateUrl: './gestion-clases.component.html',
   styleUrls: ['./gestion-clases.component.scss'],
-  animations: [
-    trigger(
-      'tableAnimationClase', [
-      transition(':enter', [
-        style({ transform: 'translateX(100%)', opacity: 0 }),
-        animate('400ms', style({ transform: 'translateX(0)', opacity: 1, 'overflow-x': 'hidden' }))
-      ]),
-      transition(':leave', [
-        style({ transform: 'translateX(0)', opacity: 1 }),
-        animate('400ms', style({ transform: 'translateX(100%)', opacity: 0 }))
-      ])
-    ])
-  ]
 })
 export class GestionClasesComponent implements OnInit {
 
@@ -37,7 +24,8 @@ export class GestionClasesComponent implements OnInit {
 
 
   constructor(
-    public claseService: ClaseService
+    public claseService: ClaseService,
+    public modalService : ModalService,
   ) { }
 
   ngOnInit() {
@@ -64,7 +52,7 @@ export class GestionClasesComponent implements OnInit {
     var array1: any = [];
     var array2: any = [];
     this.temp = this.lsClases.filter(clase => {
-      return clase.turno.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) > -1
+      return clase.turno.descripcion.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) > -1
     })
     if (this.searchNivel != '') {
       array1 = this.lsClases.filter(clase => {
@@ -98,7 +86,7 @@ export class GestionClasesComponent implements OnInit {
 
     if (this.searchTurno != '') {
       array2 = this.temp.filter(clase => {
-        return clase.turno.toLocaleLowerCase().indexOf(this.searchTurno.toLocaleLowerCase()) > -1
+        return clase.turno.descripcion.toLocaleLowerCase().indexOf(this.searchTurno.toLocaleLowerCase()) > -1
       });
       this.temp = this.fusionarArray(this.temp, array2);
     }
@@ -122,7 +110,7 @@ export class GestionClasesComponent implements OnInit {
 
     if (this.searchTurno != '') {
       array2 = this.temp.filter(clase => {
-        return clase.turno.toLocaleLowerCase().indexOf(this.searchTurno.toLocaleLowerCase()) > -1
+        return clase.turno.descripcion.toLocaleLowerCase().indexOf(this.searchTurno.toLocaleLowerCase()) > -1
       });
       this.temp = this.fusionarArray(this.temp, array2);
     }
@@ -134,6 +122,25 @@ export class GestionClasesComponent implements OnInit {
       this.lsClases = resp.aaData;
       this.llenarTabla();
     });
+  }
+
+  //Modal
+  private openModal(obj){
+    this.modalService.modalNuevaClase(obj).subscribe(resp=>{},err=>{},()=>{
+      this.listarClases();
+    });
+  }
+
+  //Eventos del boton
+  public nuevaClase(){
+    var obj = null;
+    this.openModal(obj);
+  }
+
+  public editarclase(clase){
+    var obj = Object.assign({},clase);
+    obj.accion = "A";
+    this.openModal(clase);
   }
 
   //funciones auxiliares
