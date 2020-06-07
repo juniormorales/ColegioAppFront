@@ -1,5 +1,5 @@
 <div class="content">
-    <div class=" row mt-5 ml-auto mr-auto">
+    <div class=" row col-md-10 mr-auto ml-auto">
         <ol class=" breadcrumb bg-transparent ml-3">
             <li class=" breadcrumb-item active"><a routerLink="/administracion/clases/gestionclase"> Gestion de Clases
                 </a></li>
@@ -8,21 +8,14 @@
         <div class="card">
             <div class=" card-body">
                 <div class="col">
-                    <p class="text-center">PRIMARIA</p>
+                    <p class="text-center">{{nivel.descripcion}}</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row mt-5">
+    <div class="row">
         <div class=" col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <p class="text-center">Grados</p>
-                </div>
-                <div class="card-body">
-                    
-                </div>
-            </div>
+            <app-grupo-grado [recibirNivel]="enviarNivel.asObservable()"></app-grupo-grado>
         </div>
     </div>
 </div>

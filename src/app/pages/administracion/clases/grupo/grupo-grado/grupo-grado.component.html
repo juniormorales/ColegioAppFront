@@ -1,0 +1,51 @@
+<div class=" col-md-10 mr-auto ml-auto">
+    <div class="wizard-container">
+        <div class="col-md-8 ml-auto mr-auto pt-3 ">
+            <h2 class=" text-center">Grupos de salones</h2>
+        </div>
+        <div class="row mt-5">
+            <div class="card">
+                <div class="body">
+                    <div  *ngFor= "let grado of lsGrados | paginate: { itemsPerPage: 3, currentPage: p }">
+                        <div class="row ml-2 mr-2 mt-5">
+                            <div class="col-12 col-lg-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title"><h4>{{grado.grado.descripcion + '° de ' + grado.grado.nivel.descripcion}}</h4></div>
+                                    </div>
+                                    <div class="card-body">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-9">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title"><h4 class="text-center">Secciones asignadas</h4></div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div *ngFor="let seccion of grado.lsSeccion">
+                                            <div class="row ml-2 mr-2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <div class="card-title"><h6>{{seccion.descripcion}}</h6></div>
+                                                    </div>
+                                                    <div class="card-body">
+    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
